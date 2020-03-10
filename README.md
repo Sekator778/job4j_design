@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Sekator778/job4j_design.svg?branch=master)](https://travis-ci.org/Sekator778/job4j_design)
+
 chapter_001 - Часть 001. TDD.
 
 сhapter_002 - Часть 002. Структуры данных и алгоритмы.
