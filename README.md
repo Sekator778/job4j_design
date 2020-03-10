@@ -11,5 +11,9 @@ chapter_004 - Часть 004. Базы данных.
 
 chapter_005 - Часть 005. JVM и JMM.
 
+
 I love JAVA
 travis +
+
+Ниже ссылки на материалы по курсу
+[Вопросы для собеседования](course materials and more/ood.md#вопросы-ответы)
