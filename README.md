@@ -17,4 +17,4 @@ travis +
 
 Ниже ссылки на материалы по курсу
 
-[Вопросы для собеседования](course materials and more/ood.md#OOD)
+[Вопросы для собеседования](course_materials/ood.md#OOD)
