@@ -12,6 +12,7 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 env:
   global:
+    - CODECOV_TOKEN = 2015ff7c-acba-4517-8e77-98ba71aa4c9c
 
 
 # Отправлять уведомление на почтуyouremail@smtp.ru(Изменить на свою) если сборка упала
