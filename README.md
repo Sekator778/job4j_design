@@ -16,4 +16,5 @@ I love JAVA
 travis +
 
 Ниже ссылки на материалы по курсу
-[Вопросы для собеседования](course materials and more/ood.md#вопросы-ответы)
+
+[Вопросы для собеседования](course materials and more/ood.md#OOD)

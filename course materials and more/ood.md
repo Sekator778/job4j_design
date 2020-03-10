@@ -1,4 +1,4 @@
-##OOD
+#OOD
 + [1. Принципы Kiss, Dry и Yagni](#Что-такое-KISS)
 
 ##Что-такое-KISS
