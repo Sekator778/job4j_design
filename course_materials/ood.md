@@ -4,12 +4,15 @@
 
 ## 1 Что такое KISS
 
-+ ООП.
-KISS - keep it simple and short  
++ KISS - keep it simple and short  
        будь проще и краток
-DRY - dont repeat yourself        
++ DRY - dont repeat yourself        
        не повторяйся
-YAGNI - you arent going need it  
+       То есть, старайтесь использовать уже существующие методы,
+        чтобы решить новую задачу. Не копируйте код.
++ YAGNI - you arent going need it  
      тебе это не понадобится
+     Подумайте, стоит ли создавать новый метод. 
+     Можно ли решить задачу уже существующими методами.
 
 [к оглавлению](#OOD)
