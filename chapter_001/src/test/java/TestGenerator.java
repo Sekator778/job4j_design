@@ -38,9 +38,11 @@ public class TestGenerator {
     @Test(expected = IllegalArgumentException.class)
     public void whenNotHaveKey() {
         String string = "I love ${one}";
-        Map<String, String> map = new HashMap<>() {{
-            put("key", "Java");
-        }};
+        Map<String, String> map = new HashMap<>() {
+            {
+                put("key", "Java");
+            }
+        };
         String result = template.generate(string, map);
         assertThat(result, is("I love Java"));
     }
@@ -48,11 +50,13 @@ public class TestGenerator {
     @Test
     public void whenHaveManykeys() {
         String string = "I love ${key} and i wont ${do} very ${how}";
-        Map<String, String> map = new HashMap<>() {{
-            put("key", "Java");
-            put("do", "study");
-            put("how", "hard");
-        }};
+        Map<String, String> map = new HashMap<>() {
+            {
+                put("key", "Java");
+                put("do", "study");
+                put("how", "hard");
+            }
+        };
         String result = template.generate(string, map);
         assertThat(result, is("I love Java and i wont study very hard"));
     }
@@ -60,11 +64,13 @@ public class TestGenerator {
     @Test
     public void whenHaveManySimilarKey() {
         String string = "Help, ${sos}, ${sos}, ${sos}";
-        Map<String, String> map = new HashMap<>() {{
-            put("sos", "Aaa");
-            put("do", "study");
-            put("how", "hard");
-        }};
+        Map<String, String> map = new HashMap<>() {
+            {
+                put("sos", "Aaa");
+                put("do", "study");
+                put("how", "hard");
+            }
+        };
         String result = template.generate(string, map);
         assertThat(result, is("Help, Aaa, Aaa, Aaa"));
     }
