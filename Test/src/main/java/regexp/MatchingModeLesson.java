@@ -9,7 +9,7 @@ public class MatchingModeLesson {
         Pattern p = Pattern.compile("A#this is commet", Pattern.COMMENTS);
 //        Pattern p = Pattern.compile("a", Pattern.MULTILINE);
         Matcher m = p.matcher("A");
-        while(m.find()) {
+        while (m.find()) {
             System.out.print(m.start() + " " + m.group() + " ");
         }
         System.out.println("");

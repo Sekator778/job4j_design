@@ -10,7 +10,7 @@ public class StartEndStringAnchorsLesson {
 //        Pattern p = Pattern.compile("c$");
 //        Pattern p = Pattern.compile("b$");
         Matcher m = p.matcher("abc");
-        while(m.find()) {
+        while (m.find()) {
             System.out.print(m.start() + " " + m.group() + " ");
         }
         System.out.println("");
@@ -18,8 +18,9 @@ public class StartEndStringAnchorsLesson {
         Pattern p2 = Pattern.compile("\\d+");
         //Pattern p2 = Pattern.compile("^\\d+$");
         Matcher m2 = p2.matcher("ab4c");
-        if(m2.find()) {
-            System.out.println("it's a number");;
+        if (m2.find()) {
+            System.out.println("it's a number");
+            ;
         }
         System.out.println("");
 
@@ -30,7 +31,7 @@ public class StartEndStringAnchorsLesson {
 //        Pattern p3 = Pattern.compile("\\Ane\\Z", Pattern.MULTILINE);
         //Pattern p3 = Pattern.compile("ne\\z", Pattern.MULTILINE);
         Matcher m3 = p3.matcher("first line\nsecond line");
-        while(m3.find()) {
+        while (m3.find()) {
             System.out.print(m3.start() + " " + m3.group() + " ");
         }
         System.out.println("");
@@ -39,7 +40,7 @@ public class StartEndStringAnchorsLesson {
 
         Pattern p4 = Pattern.compile("^\\d*$");
         Matcher m4 = p4.matcher("");
-        if(m4.find()) {
+        if (m4.find()) {
             System.out.println(m4.start());
             System.out.println("".charAt(m4.start()));
         }

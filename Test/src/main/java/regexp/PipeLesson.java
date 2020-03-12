@@ -7,7 +7,7 @@ public class PipeLesson {
     public static void main(String[] args) {
         Pattern p = Pattern.compile("cat|dog");
         Matcher m = p.matcher("I like my dog!");
-        while(m.find()) {
+        while (m.find()) {
             System.out.print(m.start() + " " + m.group() + " ");
         }
         System.out.println("");
@@ -19,7 +19,7 @@ public class PipeLesson {
 //        Pattern p2 = Pattern.compile("\\b(Get(Value)?|Set(Value)?)\\b");
 //        Pattern p2 = Pattern.compile("\b(Get|Set)(Value)?\b");
         Matcher m2 = p2.matcher("SetValue");
-        while(m2.find()) {
+        while (m2.find()) {
             System.out.print(m2.start() + " " + m2.group() + " ");
         }
         System.out.println("");

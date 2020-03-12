@@ -9,7 +9,7 @@ public class NamedCapturingGroup {
 
         Pattern p = Pattern.compile("<(?<tag>[A-Z][A-Z0-9]*)[^>]*>.*?</\\k<tag>>");
         Matcher m = p.matcher("This is a <EM>first</EM> test");
-        while(m.find()) {
+        while (m.find()) {
             System.out.print(m.start() + " " + m.group() + " ");
         }
         System.out.println("");

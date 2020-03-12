@@ -10,7 +10,7 @@ public class PosixCharacterClassesLesson {
         Pattern p = Pattern.compile("[^x-z\\p{Digit}]");
 //        Pattern p = Pattern.compile("[x-z^\\p{Digit}]");
         Matcher m = p.matcher("5");
-        while(m.find()) {
+        while (m.find()) {
             System.out.print(m.start() + " " + m.group() + " ");
         }
         System.out.println("");

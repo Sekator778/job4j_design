@@ -16,7 +16,7 @@ public class TestMultipleRequirementsLesson {
         //\b(?=\w{6}\b)\w{0,3}cat\w*
         Pattern p = Pattern.compile("(?=\\b\\w{6}\\b)\\w*cat\\w*");
         Matcher m = p.matcher("wecate");
-        while(m.find()) {
+        while (m.find()) {
             System.out.print(m.start() + " " + m.group() + " ");
         }
         System.out.println("");
@@ -24,7 +24,7 @@ public class TestMultipleRequirementsLesson {
         //word 6-12 letter should have cat or dog or mouse
         Pattern p2 = Pattern.compile("\\b(?=\\w{6,12}\\b)\\w{0,9}(cat|dog|mouse)\\w*");
         Matcher m2 = p2.matcher("wecate");
-        while(m2.find()) {
+        while (m2.find()) {
             System.out.print(m2.start() + " " + m2.group() + " ");
         }
         System.out.println("");

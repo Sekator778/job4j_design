@@ -8,7 +8,7 @@ public class CharackterClassesLesson {
         Pattern p = Pattern.compile("gr[ae]y");
         Matcher m = p.matcher("gray");
         //Matcher m = p.matcher("grey");
-        while(m.find()) {
+        while (m.find()) {
             System.out.print(m.start() + " " + m.group() + " ");
         }
         System.out.println("");
@@ -19,7 +19,7 @@ public class CharackterClassesLesson {
         Pattern p2 = Pattern.compile("q[^u]");
         Matcher m2 = p2.matcher("Iraq is a country");
         //Matcher m2 = p2.matcher("Iraq");
-        while(m2.find()) {
+        while (m2.find()) {
             System.out.print(m2.start() + " " + m2.group() + " ");
         }
         System.out.println("");
@@ -30,7 +30,7 @@ public class CharackterClassesLesson {
         //[\Q[-]\E]
         Pattern p3 = Pattern.compile("[*+]");
         Matcher m3 = p3.matcher("1+1=2");
-        while(m3.find()) {
+        while (m3.find()) {
             System.out.print(m3.start() + " " + m3.group() + " ");
         }
         System.out.println("");
@@ -46,7 +46,7 @@ public class CharackterClassesLesson {
         //?*+
         Pattern p4 = Pattern.compile("[0-9]+");
         Matcher m4 = p4.matcher("1 + 1 = 2");
-        while(m4.find()) {
+        while (m4.find()) {
             System.out.print(m4.start() + " - " + m4.group() + ", ");
         }
         System.out.println("");

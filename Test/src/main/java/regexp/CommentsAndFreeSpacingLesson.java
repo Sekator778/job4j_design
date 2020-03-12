@@ -11,21 +11,21 @@ public class CommentsAndFreeSpacingLesson {
         Pattern p = Pattern.compile("(?x)a#aLetter");
 //        Pattern p = Pattern.compile("a#aLetter", Pattern.COMMENTS);
         Matcher m = p.matcher("a");
-        while(m.find()) {
+        while (m.find()) {
             System.out.print(m.start() + " " + m.group() + " ");
         }
         System.out.println("");
 
         Pattern p2 = Pattern.compile("(?x)a b c");
         Matcher m2 = p2.matcher("abc");
-        while(m2.find()) {
+        while (m2.find()) {
             System.out.print(m2.start() + " " + m2.group() + " ");
         }
         System.out.println("");
 
         Pattern p3 = Pattern.compile("(?x)\\ d");
         Matcher m3 = p3.matcher("4");
-        while(m3.find()) {
+        while (m3.find()) {
             System.out.print(m3.start() + " " + m3.group() + " ");
         }
         System.out.println("");
