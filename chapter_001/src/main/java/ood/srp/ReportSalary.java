@@ -19,8 +19,8 @@ public class ReportSalary {
         text.append(System.lineSeparator());
         for (Employer employer : list) {
             text.append(employer.getName()).append(";")
-                    .append(employer.getSalary()).append(";");
-            text.append(System.lineSeparator());
+                    .append(employer.getSalary()).append(";")
+                    .append(System.lineSeparator());
         }
         return text.toString();
     }
