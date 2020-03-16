@@ -10,7 +10,7 @@ import java.util.Calendar;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ReportTestIT {
+public class TestReportIT {
     MemStore store = new MemStore();
     @Test
     public void whenGeneratedForIT() {

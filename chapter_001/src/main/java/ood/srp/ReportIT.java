@@ -2,7 +2,6 @@ package ood.srp;
 
 import java.util.function.Predicate;
 
-//запись1</td> <td>запись2</td> <td>запись3</td> <td>запись4
 public class ReportIT {
     private Store store;
 

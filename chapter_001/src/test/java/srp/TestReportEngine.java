@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import java.util.Calendar;
 
-public class ReportEngineTest {
+public class TestReportEngine {
     MemStore store = new MemStore();
 
     @Test
