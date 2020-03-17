@@ -1,20 +1,26 @@
 package store;
 
 public class ControlQuality {
+    private final Storage shop;
+    private final Storage warehouse;
+    private final Storage trash;
 
-    public void handler(Food food, double discount) {
-        double now = 5;
-        double term = food.getExpireDate() - food.getCreateDate();
-        double expirationDatePercent = (food.getExpireDate() - now) / term * 100;
-        if (expirationDatePercent < 25) {
-            new Warehouse().add(food);
-        } else if (expirationDatePercent > 75) {
-            food.setDiscount(discount);
-            new Shop().add(food, discount);
-        } else if (expirationDatePercent < 0) {
-            new Trash().add(food);
+
+    public ControlQuality(Storage shop, Storage warehouse, Storage trash) {
+        this.shop = shop;
+        this.warehouse = warehouse;
+        this.trash = trash;
+    }
+
+    public void sortFood(Food food) throws EmptyStorageException {
+        if (warehouse.validate(food)) {
+            warehouse.add(food);
+        } else if (shop.validate(food)) {
+            shop.add(food);
+        } else if (trash.validate(food)) {
+            trash.add(food);
         } else {
-            new Shop().add(food);
+            throw new EmptyStorageException("wrong food");
         }
     }
 }

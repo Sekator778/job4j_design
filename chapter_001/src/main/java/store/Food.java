@@ -1,40 +1,55 @@
 package store;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.Period;
 
 public class Food {
     private String name;
-    private double expireDate;
-    private double createDate;
+    private LocalDate expireDate;
+    private LocalDate createDate;
     private double price;
     private double discount;
 
-    public double getCreateDate() {
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public Food(String name, LocalDate createDate, LocalDate expireDate, double price, double discount) {
+        this.name = name;
+        this.expireDate = expireDate;
+        this.createDate = createDate;
+        this.price = price;
+        this.discount = discount;
+    }
+
+    public LocalDate getCreateDate() {
         return createDate;
     }
 
-    public double getExpireDate() {
+    public LocalDate getExpireDate() {
         return expireDate;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setExpireDate(double expireDate) {
-        this.expireDate = expireDate;
-    }
-
-    public void setCreateDate(double createDate) {
-        this.createDate = createDate;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public void setDiscount(double discount) {
         this.discount = discount;
+    }
+
+    /**
+     * peklo !!!
+     * @param food - food any
+     * @return - percent life food
+     */
+    public double calculateLife(Food food) {
+        int storageLife = Period.between(food.getCreateDate(), food.getExpireDate()).getDays();
+        int expirationDate = Period.between(LocalDate.now(), food.getExpireDate()).getDays();
+        return (1.0 * (storageLife - expirationDate) / storageLife) * 100.0;
     }
 }
