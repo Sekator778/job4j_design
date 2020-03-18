@@ -1,6 +1,13 @@
 package parking;
 
 public interface Auto {
-    int SIZE = 1;
-    int sizeParking();
+    /**
+     * @return - individual number auto
+     */
+    int getId();
+
+    /**
+     * @return - size future auto
+     */
+    int size();
 }
