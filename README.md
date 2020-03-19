@@ -13,7 +13,6 @@ chapter_005 - Часть 005. JVM и JMM.
 
 
 I love JAVA
-travis +
 
 Ниже ссылки на материалы по курсу
 
