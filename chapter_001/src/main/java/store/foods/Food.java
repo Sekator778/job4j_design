@@ -2,6 +2,7 @@ package store.foods;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Objects;
 
 /**
  * общий фрукт)
@@ -49,6 +50,7 @@ public abstract class Food {
 
     /**
      * главный метод от которого зависист судьба все го проекта
+     *
      * @return - округленный процент скоко осталось годности
      */
     public double calculateLife() {

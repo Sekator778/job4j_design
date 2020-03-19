@@ -28,13 +28,14 @@ public class TestStorageTwoTimeAdd {
         Storage trash = new Storage(new Trash());
         storages = List.of(trash, shop, warehouse);
     }
+
     @Test
     public void whenFoodAddToWarehouse() {
         ControllQuality controlQuality = new ControllQuality(storages);
         Food apple = new Apple(
                 "Simple", now.minus(Period.ofDays(5)), now.plus(Period.ofDays(50)), 100, 10);
         boolean firstTime = controlQuality.addToStorage(apple);
-       boolean secondTime = controlQuality.addToStorage(apple);
+        boolean secondTime = controlQuality.addToStorage(apple);
         assertThat(firstTime, is(true));
         assertThat(secondTime, is(false));
     }
