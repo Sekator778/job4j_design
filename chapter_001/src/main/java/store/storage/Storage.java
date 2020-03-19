@@ -7,12 +7,12 @@ import java.util.List;
 
 /**
  * поле стратегия может быть любой кто реализует эту стратегию
- *
  */
 public class Storage {
 
     private StorageStrategy strategy;
     private List<Food> foods;
+
     /**
      * вот тут когда создаем хранилище
      * имеем пустое поле для когото %)
@@ -31,4 +31,7 @@ public class Storage {
         return foods;
     }
 
+    public boolean checkStore(Food food) {
+        return foods.contains(food);
+    }
 }
