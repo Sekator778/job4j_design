@@ -47,6 +47,7 @@ public class Config {
     }
 
     public static void main(String[] args) {
+        System.out.println(new Config("app.properties"));
         Config config = new Config("/home/sekator/projects/job4j_design/app.properties");
         config.load();
         config.values.entrySet().forEach(System.out::println);
