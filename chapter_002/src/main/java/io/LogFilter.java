@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Метод filter должен прочитать файл и вернуть строки, где предпоследнее число - это 404.
+ */
 public class LogFilter {
     public static List<String> filter(String file) {
         List<String> result = new ArrayList<>();

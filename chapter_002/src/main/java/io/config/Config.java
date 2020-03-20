@@ -1,4 +1,4 @@
-package config;
+package io.config;
 
 import java.io.*;
 import java.util.HashMap;

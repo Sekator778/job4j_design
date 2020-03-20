@@ -1,6 +1,5 @@
 package io.config;
 
-import config.Config;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
@@ -15,7 +14,7 @@ public class ConfigTest {
         config.load();
         assertThat(
                 config.value("login"),
-                is("Admin")
+                is("login")
         );
     }
 
