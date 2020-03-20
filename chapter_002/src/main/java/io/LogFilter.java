@@ -1,8 +1,6 @@
 package io;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -27,8 +25,26 @@ public class LogFilter {
         return result;
     }
 
+    public static void save(List<String> list, String outFile) {
+        try (PrintWriter writer = new PrintWriter(new BufferedOutputStream(
+                new FileOutputStream(outFile)
+        ))) {
+            // так для машины
+//            list.forEach(writer::write);
+            for (String s : list
+            ) {
+                // так для человека
+                // какой выбирать ?
+                writer.write(s + "\n");
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         List<String> log = filter("log.txt");
         log.forEach(System.out::println);
+        save(log, "404.txt");
     }
 }
