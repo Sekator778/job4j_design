@@ -10,6 +10,4 @@ public class Place {
     private int a;
     private int b;
 
-    private Map<Integer, Integer> placeMap = new HashMap<>();
-
 }

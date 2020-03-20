@@ -1,10 +1,10 @@
 package parking;
 
-public class Token {
+public class Ticket {
     private final int autoID;
     private final int parkingSite;
 
-    public Token(int autoID, int parkingSite) {
+    public Ticket(int autoID, int parkingSite) {
         this.autoID = autoID;
         this.parkingSite = parkingSite;
     }
@@ -19,6 +19,6 @@ public class Token {
 
     @Override
     public String toString() {
-        return "Token{" + "for autoID=" + autoID + ", reserve to parkingSite=" + parkingSite + '}';
+        return "Ticket {" + "for autoID = " + autoID + ", reserve to parkingSite = " + parkingSite + '}';
     }
 }

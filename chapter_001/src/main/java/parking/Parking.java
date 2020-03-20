@@ -1,10 +1,14 @@
 package parking;
 
-public class ParkingPlace {
+import java.util.List;
+import java.util.Map;
+
+public class Parking {
     private  final int size;
     private boolean busy;
+    private List<Place> placeList;
 
-    public ParkingPlace(int size) {
+    public Parking(int size) {
         this.size = size;
     }
     public void setFree() {
