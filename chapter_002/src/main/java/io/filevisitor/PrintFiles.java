@@ -12,14 +12,11 @@ import static java.nio.file.FileVisitResult.CONTINUE;
 
 public class PrintFiles implements FileVisitor<Path> {
     private String partOfName;
-    private List<String> foundFiles = new ArrayList<>();
+    public List<String> foundFiles;
 
-    public void setPartOfName(String partOfName) {
+    public PrintFiles(String partOfName) {
         this.partOfName = partOfName;
-    }
-
-    public List<String> getFoundFiles() {
-        return this.foundFiles;
+        this.foundFiles = new ArrayList<>();
     }
 
     @Override

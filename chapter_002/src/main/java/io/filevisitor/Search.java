@@ -8,15 +8,12 @@ import java.util.List;
 
 public class Search {
     public static List<String> search(Path root, String ext) throws IOException {
-        PrintFiles printFiles = new PrintFiles();
-        printFiles.setPartOfName(ext);
+        PrintFiles printFiles = new PrintFiles(ext);
         Files.walkFileTree(root, printFiles);
-        return printFiles.getFoundFiles();
+        return printFiles.foundFiles;
     }
 
     public static void main(String[] args) throws IOException {
-//        Path start = Paths.get("/home/sekator/projects/");
-//        Files.walkFileTree(start, new PrintFiles());
         search(Paths.get("/home/sekator/projects/"), "js")
                 .forEach(System.out::println);
     }
