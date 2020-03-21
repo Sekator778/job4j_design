@@ -1,6 +1,7 @@
 package io;
 
 import java.io.FileInputStream;
+import java.util.Arrays;
 
 public class ReadFile {
     public static void main(String[] args) {
@@ -21,5 +22,6 @@ public class ReadFile {
              ) {
             System.out.println(s);
         }
+//        Arrays.stream(lines).forEach(System.out::println);
     }
 }
