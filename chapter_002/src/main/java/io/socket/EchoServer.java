@@ -7,8 +7,8 @@ import java.net.Socket;
 public class EchoServer {
     public static void main(String[] args) throws IOException {
         try (ServerSocket server = new ServerSocket(9000)) {
-            Socket socket = server.accept();
-            while (!server.isClosed()) {
+            while (true) {
+                Socket socket = server.accept();
                 try (OutputStream out = socket.getOutputStream();
                      BufferedReader in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
@@ -16,7 +16,6 @@ public class EchoServer {
                     while (!(str = in.readLine()).isEmpty()) {
                         if (str.contains("Bye")) {
                             server.close();
-                            break;
                         }
                         System.out.println(str);
                     }
