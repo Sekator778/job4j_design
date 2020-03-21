@@ -34,6 +34,6 @@ public class Analyze {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new Analyze().unavailable("/home/sekator/projects/job4j_design/server.log", "target.txt");
+        new Analyze().unavailable("./server.log", "target.txt");
     }
 }

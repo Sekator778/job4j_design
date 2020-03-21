@@ -32,14 +32,7 @@ public class LogFilter {
         try (PrintWriter writer = new PrintWriter(new BufferedOutputStream(
                 new FileOutputStream(outFile)
         ))) {
-            // так для машины
-//            list.forEach(writer::write);
-            for (String s : list
-            ) {
-                // так для человека
-                // какой выбирать ?
-                writer.write(s + "\n");
-            }
+            list.forEach(writer::write);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
