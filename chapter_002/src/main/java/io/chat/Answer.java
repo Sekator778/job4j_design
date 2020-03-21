@@ -10,7 +10,7 @@ public class Answer {
     public static String chatAnswer() {
         Random random = new Random();
         List<String> list = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader("/home/sekator/projects/job4j_design/chapter_002/src/main/java/io/chat/words.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("chapter_002/src/main/java/io/chat/words1.txt"))) {
             reader.lines().forEach(list::add);
         } catch (Exception e) {
             e.printStackTrace();
