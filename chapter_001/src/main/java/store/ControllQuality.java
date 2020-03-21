@@ -26,7 +26,7 @@ public class ControllQuality {
         boolean rsl = false;
         for (Storage storage : storages
         ) {
-            if (!storage.checkStore(food)) {
+            if (storage.checkStore(food)) {
                 rsl = storage.add(food);
             }
         }

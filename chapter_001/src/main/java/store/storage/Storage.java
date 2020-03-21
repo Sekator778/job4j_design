@@ -32,6 +32,6 @@ public class Storage {
     }
 
     public boolean checkStore(Food food) {
-        return foods.contains(food);
+        return !foods.contains(food);
     }
 }
