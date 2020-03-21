@@ -16,7 +16,6 @@ public class Chat {
             writer.write(start + "\n");
             while (!((question = scanner.nextLine()).equalsIgnoreCase("exit"))) {
                 writer.write("Q:" + question + "\n");
-
                 if (question.equals("stop")) {
                     startChat = false;
                 } else if (question.equals("go")) {

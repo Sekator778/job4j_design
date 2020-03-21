@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Dir {
     public static void main(String[] args) {
-        File file = new File("/home/sekator/projects/");
+        File file = new File(".");
         if (!file.exists()) {
             throw new IllegalStateException(String.format("Not exist %s", file.getAbsoluteFile()));
         }
