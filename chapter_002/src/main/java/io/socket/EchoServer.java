@@ -14,12 +14,21 @@ public class EchoServer {
                              new InputStreamReader(socket.getInputStream()))) {
                     String str;
                     while (!(str = in.readLine()).isEmpty()) {
-                        if (str.contains("Bye")) {
+                        if (str.contains("exit")) {
+                            out.write("Server close\n".getBytes());
                             server.close();
+                        } else if (str.contains("hello")) {
+                            out.write("Hello, dear friend.\n".getBytes());
+                            break;
+                        } else {
+                            str = str.substring(str.indexOf("=") + 1);
+                            int x = str.indexOf("H");
+                            str = str.substring(0, x);
+                            out.write(str.getBytes());
+                            out.write("\r\n".getBytes());
+                            break;
                         }
-                        System.out.println(str);
                     }
-                    out.write("HTTP/1.1 200 OK\r\n\\".getBytes());
                 }
             }
         }
