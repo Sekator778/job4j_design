@@ -3,6 +3,7 @@ package store;
 import store.foods.Food;
 import store.storage.Storage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControllQuality {
@@ -34,5 +35,24 @@ public class ControllQuality {
             }
         }
         return rsl;
+    }
+
+    public void resort() {
+        List<Food> redistributedFood = new ArrayList<>();
+        for (Storage store : storages) {
+            redistributedFood.addAll(store.takeAll());
+        }
+        redistributedFood.forEach(food -> food.setDiscount(0.0));
+        for (Food food : redistributedFood
+        ) {
+            addToStorage(food);
+        }
+    }
+
+    public boolean sort(List<Food> list) {
+        list.forEach(
+                this::addToStorage
+        );
+        return true;
     }
 }

@@ -34,4 +34,14 @@ public class Storage {
     public boolean checkStore(Food food) {
         return !foods.contains(food);
     }
+
+    public List<Food> takeAll() {
+        List<Food> taken =  foods;
+        foods.clear();
+        return taken;
+     }
+
+    public boolean isEmpty() {
+        return foods.isEmpty();
+    }
 }
