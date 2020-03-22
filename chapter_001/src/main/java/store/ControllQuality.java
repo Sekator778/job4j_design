@@ -28,6 +28,9 @@ public class ControllQuality {
         ) {
             if (storage.checkStore(food)) {
                 rsl = storage.add(food);
+                if (rsl) {
+                    break;
+                }
             }
         }
         return rsl;
