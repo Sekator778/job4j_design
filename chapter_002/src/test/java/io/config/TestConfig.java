@@ -9,7 +9,7 @@ public class TestConfig {
 
     @Test
     public void whenPairToKey() {
-        String path = "/home/sekator/projects/job4j_design/app.properties";
+        String path = "../app.properties";
         Config config = new Config(path);
         config.load();
         assertThat(
@@ -20,7 +20,7 @@ public class TestConfig {
 
     @Test(expected = UnsupportedOperationException.class)
     public void whenPairNoFindKey() {
-        String path = "/home/sekator/projects/job4j_design/result.txt";
+        String path = "../result.txt";
         Config config = new Config(path);
         config.load();
         assertThat(

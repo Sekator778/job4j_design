@@ -9,7 +9,7 @@ public class ConfigTest {
 
     @Test
     public void whenPairWithoutComment() {
-        String path = "/home/sekator/projects/job4j_design/input.txt";
+        String path = "../input.txt";
         Config config = new Config(path);
         config.load();
         assertThat(
@@ -20,7 +20,7 @@ public class ConfigTest {
 
     @Test(expected = UnsupportedOperationException.class)
     public void whenEmptyStringAndWrongPair() {
-        String path = "/home/sekator/projects/job4j_design/input.txt";
+        String path = "../input.txt";
         Config config = new Config(path);
         config.load();
         assertThat(
