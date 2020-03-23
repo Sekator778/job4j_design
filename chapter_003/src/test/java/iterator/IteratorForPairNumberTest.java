@@ -15,9 +15,10 @@ public class IteratorForPairNumberTest {
     public void next() {
         int[] values = new int[]{1, 2, 3, 41, 7};
 
-        IteratorForPairNumber pairNumber = new IteratorForPairNumber(values);
+        IteratorForPairIndexNumber pairNumber = new IteratorForPairIndexNumber(values);
+
         int rsl = pairNumber.next();
 
-        assertThat(rsl, is(3));
+        assertThat(rsl, is(2));
     }
 }

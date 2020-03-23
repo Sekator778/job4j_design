@@ -2,11 +2,11 @@ package iterator;
 
 import java.util.Iterator;
 
-public class IteratorForPairNumber implements Iterator<Integer> {
+public class IteratorForPairIndexNumber implements Iterator<Integer> {
     private final int[] values;
     private int index = 0;
 
-    public IteratorForPairNumber(int[] values) {
+    public IteratorForPairIndexNumber(int[] values) {
         this.values = values;
     }
 
@@ -18,8 +18,7 @@ public class IteratorForPairNumber implements Iterator<Integer> {
     @Override
     public Integer next() {
         if ((index + 2) < values.length) {
-            index += 2;
-            return values[index];
+            return index + 2;
         } else {
             throw new IndexOutOfBoundsException();
         }
