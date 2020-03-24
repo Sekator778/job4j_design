@@ -1,6 +1,7 @@
 package iterator.even;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class EvenIterator implements Iterator<Integer> {
     private final int[] values;
@@ -19,14 +20,18 @@ public class EvenIterator implements Iterator<Integer> {
     public Integer next() {
         int rsl = 0;
         if (evenNext()) {
-            if (even(index)) {
-                rsl = values[index];
-                return rsl;
-            } else {
-                index = index + 1;
-                next();
+            while (index < values.length) {
+                if (even(index)) {
+                    rsl = values[index];
+                    index++;
+                    break;
+                }
+                index++;
             }
+        } else {
+            throw new NoSuchElementException();
         }
+
         return rsl;
     }
 
