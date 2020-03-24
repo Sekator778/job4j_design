@@ -2,21 +2,25 @@ package io.archive;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class Zip {
     private List<File> seekBy(String root, String ext) throws IOException {
-        MyVisitorForArchive myVisitorForArchive = new MyVisitorForArchive();
-        myVisitorForArchive.setPartOfName(ext);
-        Files.walkFileTree(Paths.get(root), myVisitorForArchive);
-        return myVisitorForArchive.getFoundFiles();
+        List<File> list = new ArrayList<>();
+        Files.walk(Paths.get(root))
+                .filter(Files::isRegularFile)
+                .filter(path -> !path.getFileName().toString().endsWith(ext))
+                .forEach(i -> list.add(i.toFile()));
+        return list;
     }
 
-    public static void pack(File source, File target) {
-        try (ZipOutputStream zip = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(target)))) {
+    public static void pack(File source, String targetS) {
+        try (ZipOutputStream zip = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(targetS)))) {
             zip.putNextEntry(new ZipEntry(source.getPath()));
             try (BufferedInputStream out = new BufferedInputStream(new FileInputStream(source))) {
                 zip.write(out.readAllBytes());
@@ -31,5 +35,5 @@ public class Zip {
         new Zip().seekBy(args1.directory(), args1.excuse())
                 .forEach(file ->
                         pack(file, args1.output()));
-    }
+     }
 }

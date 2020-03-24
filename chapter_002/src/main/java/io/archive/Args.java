@@ -1,6 +1,5 @@
 package io.archive;
 
-import java.io.File;
 import java.nio.file.Paths;
 
 public class Args {
@@ -21,14 +20,14 @@ public class Args {
         if (!testArgs(this.args)) {
             throw new IllegalArgumentException("wrong args");
         }
-        return Paths.get(this.args[3]).toString();
+        return Paths.get(this.args[3]).toString().replace("*", "");
     }
 
-    public File output() {
+    public String output() {
         if (!testArgs(this.args)) {
             throw new IllegalArgumentException("wrong args");
         }
-        return Paths.get(this.args[5]).toFile();
+        return Paths.get(this.args[5]).toString();
     }
 
     private boolean testArgs(String[] args) {
