@@ -8,29 +8,29 @@ public class Chat {
         String start = "Start chat \n stop - for stop chat;\n go - for continuation chat";
         String question;
         String answer;
-        boolean startChat = true;
+        boolean stop = true;
         Scanner scanner = new Scanner(System.in);
         try (PrintWriter writer = new PrintWriter(new BufferedOutputStream(
                 new FileOutputStream("chatLog.txt")))) {
             System.out.println(start);
             writer.write(start + "\n");
-            while (!((question = scanner.nextLine()).equalsIgnoreCase("exit"))) {
+            question = scanner.nextLine();
+            while (!(question.equalsIgnoreCase("exit"))) {
                 writer.write("Q:" + question + "\n");
                 if (question.equals("stop")) {
-                    startChat = false;
+                    stop = false;
                 } else if (question.equals("go")) {
-                    startChat = true;
-                    continue;
+                    stop = true;
                 }
-                if (startChat) {
+                if ((stop) && !question.isEmpty()) {
                     answer = Answer.chatAnswer();
                     System.out.println(answer);
                     writer.write("A:" + answer + "\n");
                 }
+                question = scanner.nextLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }
