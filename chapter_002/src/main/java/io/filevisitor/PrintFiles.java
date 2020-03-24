@@ -7,16 +7,17 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 
 public class PrintFiles implements FileVisitor<Path> {
     private String partOfName;
-    public List<String> foundFiles;
+    private List<String> foundFiles;
 
-    public PrintFiles(String partOfName) {
+    public PrintFiles(String partOfName, List<String> list) {
         this.partOfName = partOfName;
-        this.foundFiles = new ArrayList<>();
+        this.foundFiles = list;
     }
 
     @Override
