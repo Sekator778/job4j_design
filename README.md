@@ -18,4 +18,4 @@ I love JAVA
 
 [Вопросы для собеседования](course_materials/ood.md#OOD)
 
-![Image alt] (https://github.com/Sekator778/job4j_design/blob/master/course_materials/java_pic.jpg)
+![джавик](https://github.com/Sekator778/job4j_design/blob/master/course_materials/java_pic.jpg)
