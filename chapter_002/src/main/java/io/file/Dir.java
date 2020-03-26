@@ -5,11 +5,8 @@ import java.util.Objects;
 
 /**
  * if (!file.exists())  -  Проверяем, что файл существует
- * <p>
  * if (!file.isDirectory()) - Проверяет, что файл - это директория.
- * <p>
  * for (File subfile : file.listFiles()) - Получаем список файлов в этой директории.
- * <p>
  * if (subfile.isFile()) - возвращает значение true, если по указанному пути находится файл
  */
 public class Dir {
