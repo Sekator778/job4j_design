@@ -17,3 +17,5 @@ I love JAVA
 Ниже ссылки на материалы по курсу
 
 [Вопросы для собеседования](course_materials/ood.md#OOD)
+
+[pik] (/home/sekator/projects/job4j_design/course_materials/java_pic.jpg)
