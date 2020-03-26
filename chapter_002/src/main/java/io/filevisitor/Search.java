@@ -17,8 +17,12 @@ public class Search {
         return result;
     }
 
-    public static void main(String[] args) throws IOException {
-        search(Paths.get("/home/sekator/projects/"), "js")
+    public static void main(String[] arguments) throws IOException {
+        if (arguments.length == 0) {
+            throw new IllegalArgumentException(
+                    "Root folder is null. Add Program argument's where [0] = root; [1] = search string ");
+        }
+        search(Paths.get(arguments[0]), arguments[1])
                 .forEach(System.out::println);
     }
 }

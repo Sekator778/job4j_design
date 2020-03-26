@@ -14,7 +14,7 @@ public class ConfigTest {
         config.load();
         assertThat(
                 config.value("login"),
-                is("login")
+                is("admin")
         );
     }
 
