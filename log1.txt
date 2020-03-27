@@ -1,0 +1,2 @@
+/home/sekator/test/22/222.bmp
+/home/sekator/test/22/223/333.bmp

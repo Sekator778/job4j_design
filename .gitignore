@@ -72,3 +72,4 @@ jrebel.lic
 build
 .gradle
 *.pid
+/chapter_002/src/main/java/io/test/
