@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertTrue;
 
 public class SimpleArrayTest {
     private final SimpleArray<String> stringSimpleArrayArray = new SimpleArray<>(2);
@@ -86,5 +87,25 @@ public class SimpleArrayTest {
     public void whenSetByIndexOutOfBoundsThenThrowsException() {
         simpleArray.add(23);
         simpleArray.set(77, 23);
+    }
+
+    @Test
+    public void whenTestIndexReturn() {
+        String s1 = ("one");
+        String s2 = ("two");
+        String s3 = ("ggg");
+        stringSimpleArrayArray.add(s1);
+        stringSimpleArrayArray.add(s2);
+        assertThat(stringSimpleArrayArray.getIndex(s1), is(0));
+        assertThat(stringSimpleArrayArray.getIndex(s2), is(1));
+        assertThat(stringSimpleArrayArray.getIndex(s3), is(-1));
+    }
+
+    @Test
+    public void whenSuccessfulRemoveItem() {
+        stringSimpleArrayArray.add("one");
+        int length = stringSimpleArrayArray.length();
+        assertThat(length, is(1));
+        assertTrue(stringSimpleArrayArray.remove(0));
     }
 }

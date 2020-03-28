@@ -2,6 +2,7 @@ package generic;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.function.Predicate;
 
 /**
  * @author Sekator
@@ -44,12 +45,13 @@ public class SimpleArray<T> implements Iterable<T> {
      *
      * @param index - в каком месте удалять
      */
-    public void remove(int index) {
+    public boolean remove(int index) {
         checkIndex(index);
         for (int i = index; i < objects.length - 1; i++) {
             this.objects[i] = this.objects[i + 1];
         }
         size--;
+        return true;
     }
 
     /**
@@ -71,6 +73,17 @@ public class SimpleArray<T> implements Iterable<T> {
         return size;
     }
 
+    public int getIndex(T model) {
+        int rsl = -1;
+        for (int i = 0; i < objects.length; i++) {
+            if (objects[i].equals(model)) {
+                rsl = i;
+                break;
+            }
+        }
+        return rsl;
+    }
+
     /**
      * @return iterator for elements to array
      */
@@ -86,6 +99,20 @@ public class SimpleArray<T> implements Iterable<T> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
+    }
+
+    /**
+     * как такое сделать без предиката,
+     * @param predicate - чего проверить
+     * @return если тест дал тру то возвращаем номер индекса массива
+     */
+    public int indexBy(Predicate<T> predicate) {
+        for (int i = 0; i < size; i++) {
+            if (predicate.test(objects[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -114,5 +141,4 @@ public class SimpleArray<T> implements Iterable<T> {
             return objects[index++];
         }
     }
-
 }
