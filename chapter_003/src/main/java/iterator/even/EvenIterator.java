@@ -1,13 +1,12 @@
 package iterator.even;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * this cod find even number for array
  * example new int[]{1, 2, 3, 4, 5, 6, 7}
  * must find 2, 4
- *
+ * <p>
  * method hasNext gives true only when even
  * example = 1, -> hasNext -> 3, 4,  -true
  * example = 1, -> hasNext -> 3, 5,  -false
@@ -22,20 +21,18 @@ public class EvenIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        return evenNext();
+        return evenNext() == 0;
     }
 
     @Override
-    public Integer next() {
-         if (!evenNext()) {
-            throw  new NoSuchElementException();
-        } else {
-            return values[index++];
-        }
+    public Integer next()  {
+        evenNext();
+        return values[index++];
     }
 
     /**
      * check number even or no
+     *
      * @param x - number for check
      * @return - true if even number
      */
@@ -45,14 +42,15 @@ public class EvenIterator implements Iterator<Integer> {
 
     /**
      * method find even to the end of the array
+     *
      * @return - are the or not even element in the array
      */
 
-    public boolean evenNext() {
-        boolean rsl = false;
+    public Integer evenNext() {
+        int rsl = -1;
         for (int i = index; i < values.length; i++) {
             if (even(i)) {
-                rsl = true;
+                rsl++;
                 this.index = i;
                 break;
             }

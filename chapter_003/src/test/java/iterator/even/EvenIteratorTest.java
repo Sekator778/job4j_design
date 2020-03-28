@@ -1,15 +1,14 @@
 package iterator.even;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 
 public class EvenIteratorTest {
@@ -65,7 +64,7 @@ public class EvenIteratorTest {
     public void evenTest() {
         EvenIterator iterator = new EvenIterator(new int[]{1, 2, 1, 1});
         assertFalse(iterator.even(0));
-        assertTrue(iterator.evenNext());
+        assertThat(iterator.evenNext(), is(0));
     }
 }
 
