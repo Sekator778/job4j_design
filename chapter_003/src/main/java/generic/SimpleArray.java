@@ -9,11 +9,11 @@ import java.util.function.Predicate;
  * this универсальная обертка над массивом
  */
 public class SimpleArray<T> implements Iterable<T> {
-    private final T[] objects;
+    private final T[] elementData;
     private int size = 0;
 
     public SimpleArray(int size) {
-        this.objects = (T[]) new Object[size];
+        this.elementData = (T[]) new Object[size];
     }
 
     /**
@@ -22,10 +22,10 @@ public class SimpleArray<T> implements Iterable<T> {
      * @param model - элемент
      */
     public void add(T model) {
-        if (size == objects.length) {
+        if (size == elementData.length) {
             throw new IllegalStateException("Array is full");
         }
-        this.objects[size++] = model;
+        this.elementData[size++] = model;
     }
 
     /**
@@ -36,7 +36,7 @@ public class SimpleArray<T> implements Iterable<T> {
      */
     public void set(int index, T model) {
         checkIndex(index);
-        this.objects[index] = model;
+        this.elementData[index] = model;
     }
 
     /**
@@ -47,8 +47,8 @@ public class SimpleArray<T> implements Iterable<T> {
      */
     public boolean remove(int index) {
         checkIndex(index);
-        for (int i = index; i < objects.length - 1; i++) {
-            this.objects[i] = this.objects[i + 1];
+        for (int i = index; i < elementData.length - 1; i++) {
+            this.elementData[i] = this.elementData[i + 1];
         }
         size--;
         return true;
@@ -62,7 +62,7 @@ public class SimpleArray<T> implements Iterable<T> {
      */
     public T get(int position) {
         checkIndex(position);
-        return (T) this.objects[position];
+        return (T) this.elementData[position];
     }
 
     /**
@@ -75,8 +75,8 @@ public class SimpleArray<T> implements Iterable<T> {
 
     public int getIndex(T model) {
         int rsl = -1;
-        for (int i = 0; i < objects.length; i++) {
-            if (objects[i].equals(model)) {
+        for (int i = 0; i < elementData.length; i++) {
+            if (elementData[i].equals(model)) {
                 rsl = i;
                 break;
             }
@@ -108,7 +108,7 @@ public class SimpleArray<T> implements Iterable<T> {
      */
     public int indexBy(Predicate<T> predicate) {
         for (int i = 0; i < size; i++) {
-            if (predicate.test(objects[i])) {
+            if (predicate.test(elementData[i])) {
                 return i;
             }
         }
@@ -138,7 +138,7 @@ public class SimpleArray<T> implements Iterable<T> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            return objects[index++];
+            return elementData[index++];
         }
     }
 }
