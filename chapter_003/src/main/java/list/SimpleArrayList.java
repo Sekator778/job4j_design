@@ -1,5 +1,7 @@
 package list;
 
+import java.util.NoSuchElementException;
+
 /**
  * @author Sekator  : mail sekator778@gmail.com
  *
@@ -24,6 +26,9 @@ public class SimpleArrayList<E> {
      * Реализовать метод удаления первого элемент в списке.
      */
     public E delete() {
+        if (first == null) {
+            throw new NoSuchElementException();
+        }
         first = first.next;
         this.size--;
         return first.data;
