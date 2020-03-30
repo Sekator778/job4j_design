@@ -74,6 +74,37 @@ public class SimpleLinkedList<E> implements Iterable<E> {
         return tmp.data;
     }
 
+    public E deleteLast() {
+       return remove(size - 1);
+    }
+
+    /**
+     * тут надо еще раз все проверить с 0 елементом
+     *
+     * @param index - индекс елемента на удаление
+     * @return - дату удаленного елемента
+     */
+    public E remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        int currentIndex = 0;
+        Node<E> temp = head;
+        Node<E> rsl = head;
+        while (temp != null) {
+            if (currentIndex + 1 == index) {
+                rsl = temp.getNext();
+                temp.setNext(temp.getNext().getNext());
+                size--;
+                break;
+            } else {
+                temp = temp.getNext();
+                currentIndex++;
+            }
+        }
+        return rsl.data;
+    }
+
     @Override
     public Iterator<E> iterator() {
         return new SimpleLinkedListIterator();

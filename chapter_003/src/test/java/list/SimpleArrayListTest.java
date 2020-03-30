@@ -1,5 +1,6 @@
 package list;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ConcurrentModificationException;
@@ -15,6 +16,35 @@ import static org.junit.Assert.assertTrue;
  */
 
 public class SimpleArrayListTest {
+
+    private SimpleArrayList<Integer> list;
+
+    @Before
+    public void beforeTest() {
+        list = new SimpleArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+    }
+
+    @Test
+    public void whenAddThreeElementsThenUseGetOneResultTwo() {
+        assertThat(list.get(1), is(2));
+    }
+
+    @Test
+    public void whenAddThreeElementsThenUseGetSizeResultThree() {
+        assertThat(list.length(), is(3));
+    }
+
+    @Test
+    public void whenDeleteFirstElement() {
+        assertThat(list.deleteFirst(), is(1));
+        assertThat(list.length(), is(2));
+        assertThat(list.get(0), is(2));
+        assertThat(list.get(1), is(3));
+    }
+
     @Test
     public void whenAddElementAndGrowSizeArray() {
         SimpleArrayList<Integer> list = new SimpleArrayList(2);

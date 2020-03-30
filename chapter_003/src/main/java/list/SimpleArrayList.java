@@ -43,6 +43,18 @@ public class SimpleArrayList<E> implements Iterable<E> {
         return true;
     }
 
+    /**
+     * Реализовать метод удаления первого элемент в списке.
+     */
+    public E deleteFirst() {
+        E tmp = (E) container[0];
+        for (int i = 1; i < container.length; i++) {
+            container[i - 1] = container[i];
+        }
+        size--;
+        return tmp;
+    }
+
     public E get(int index) {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException("Illegal index: " + index);
