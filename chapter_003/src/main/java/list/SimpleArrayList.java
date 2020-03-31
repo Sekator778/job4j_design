@@ -31,8 +31,6 @@ public class SimpleArrayList<E> implements Iterable<E> {
             this.container = new Object[initialCapacity];
         } else if (initialCapacity == 0) {
             this.container = new Object[DEFAULT_CAPACITY];
-        } else {
-            throw new IllegalArgumentException("Illegal Capacity: " + initialCapacity);
         }
     }
 
@@ -96,10 +94,10 @@ public class SimpleArrayList<E> implements Iterable<E> {
      */
     private class SimpleArrayIterator implements Iterator<E> {
         private int index;
-        private int currentModCount;
+        private int expectedModCount;
 
         public SimpleArrayIterator() {
-            this.currentModCount = modCount;
+            this.expectedModCount = modCount;
         }
 
         /**
@@ -116,7 +114,7 @@ public class SimpleArrayList<E> implements Iterable<E> {
          */
         @Override
         public E next() {
-            if (modCount != currentModCount) {
+            if (modCount != expectedModCount) {
                 throw new ConcurrentModificationException();
             }
             if (!hasNext()) {
