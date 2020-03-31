@@ -32,7 +32,7 @@ public class SimpleArrayList2Test {
 
     @Test
     public void whenDeleteFirstElement() {
-        assertThat(list.delete(), is(2));
+        assertThat(list.delete(), is(3));
         assertThat(list.getSize(), is(2));
         assertThat(list.get(0), is(2));
         assertThat(list.get(1), is(1));

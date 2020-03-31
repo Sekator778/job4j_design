@@ -29,9 +29,10 @@ public class SimpleArrayList2<E> {
         if (size == 0) {
             throw new NoSuchElementException();
         }
+        Node<E> rsl = first;
         first = first.next;
         this.size--;
-        return first.data;
+        return rsl.data;
     }
 
     /**

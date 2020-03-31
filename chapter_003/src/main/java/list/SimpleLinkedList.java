@@ -75,7 +75,7 @@ public class SimpleLinkedList<E> implements Iterable<E> {
     }
 
     public E deleteLast() {
-       return remove(size - 1);
+        return remove(size - 1);
     }
 
     /**
@@ -88,11 +88,16 @@ public class SimpleLinkedList<E> implements Iterable<E> {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException();
         }
+        Node<E> rsl = head;
+        if (index == 0) {
+            head = head.next;
+            size--;
+            return rsl.data;
+        }
         int currentIndex = 0;
         Node<E> temp = head;
-        Node<E> rsl = head;
         while (temp != null) {
-            if (currentIndex + 1 == index) {
+            if (currentIndex == index - 1) {
                 rsl = temp.getNext();
                 temp.setNext(temp.getNext().getNext());
                 size--;
@@ -128,6 +133,7 @@ public class SimpleLinkedList<E> implements Iterable<E> {
 
         /**
          * начинаем от первого и даем некст от первого
+         *
          * @return - next element for iteration
          */
         @Override

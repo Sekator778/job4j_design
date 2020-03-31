@@ -20,11 +20,17 @@ public class EvenIterator implements Iterator<Integer> {
         this.values = values;
     }
 
+    /**
+     * @return true or false if present next element
+     */
     @Override
     public boolean hasNext() {
         return evenNext();
     }
 
+    /**
+     * @return next even element list
+     */
     @Override
     public Integer next() {
         if (!evenNext()) {
@@ -48,7 +54,6 @@ public class EvenIterator implements Iterator<Integer> {
      *
      * @return - are the or not even element in the array
      */
-
     public boolean evenNext() {
         boolean rsl = false;
         for (int i = index; i < values.length; i++) {

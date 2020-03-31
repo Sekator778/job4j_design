@@ -5,7 +5,7 @@ package list;
  */
 
 public class SimpleStack<E> {
-    private SimpleLinkedList<E> linked = new SimpleLinkedList<E>();
+    private SimpleLinkedList<E> linked = new SimpleLinkedList<>();
 
     public E poll() {
         return linked.deleteLast();
@@ -14,4 +14,9 @@ public class SimpleStack<E> {
     public void push(E value) {
         linked.add(value);
     }
+
+    public E removeFirst() {
+        return linked.remove(0);
+    }
+
 }
