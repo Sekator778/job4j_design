@@ -116,7 +116,7 @@ public class SimpleLinkedList<E> implements Iterable<E> {
     }
 
     private class SimpleLinkedListIterator implements Iterator<E> {
-        private Node<E> nextNode = head;
+        private Node<E> node = head;
         private int currentModCount;
 
         public SimpleLinkedListIterator() {
@@ -128,7 +128,7 @@ public class SimpleLinkedList<E> implements Iterable<E> {
          */
         @Override
         public boolean hasNext() {
-            return nextNode != null;
+            return node != null;
         }
 
         /**
@@ -144,8 +144,8 @@ public class SimpleLinkedList<E> implements Iterable<E> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            E value = nextNode.data;
-            nextNode = nextNode.next;
+            E value = node.data;
+            node = node.next;
             return value;
         }
     }
