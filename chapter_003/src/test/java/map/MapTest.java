@@ -23,6 +23,9 @@ public class MapTest {
     public void whenNoChangeHashCodeAndEquals() {
         map.put(user1, new Object());
         map.put(user2, new Object());
+        System.out.println(user1.hashCode());
+        System.out.println(user2.hashCode());
+        System.out.println(user1.equals(user2));
         System.out.println(map);
     }
 
