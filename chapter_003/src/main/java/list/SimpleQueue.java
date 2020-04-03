@@ -9,7 +9,7 @@ public class SimpleQueue<E> {
     private SimpleStack<E> stack = new SimpleStack<E>();
 
     public E poll() {
-        return stack.removeFirst();
+        return stack.pop();
     }
 
     public void push(E value) {
