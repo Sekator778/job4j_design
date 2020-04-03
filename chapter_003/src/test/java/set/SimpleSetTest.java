@@ -7,6 +7,8 @@ import java.util.Iterator;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Sekator  : mail sekator778@gmail.com
@@ -22,12 +24,13 @@ public class SimpleSetTest {
     }
     @Test
     public void whenAdd() {
-        assertThat(set.toString(), is("[one, two, three]"));
+        assertTrue(set.add("four"));
+        assertThat(set.toString(), is("[one, two, three, four]"));
     }
 
     @Test
     public void whenAddDuplicate() {
-        set.add("two");
+        assertFalse(set.add("two"));
         assertThat(set.toString(), is("[one, two, three]"));
     }
 

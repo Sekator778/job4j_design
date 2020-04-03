@@ -13,14 +13,18 @@ import java.util.Iterator;
  */
 
 public class SimpleSet<E> implements Iterable<E> {
-    private final SimpleArrayList<E> values = new SimpleArrayList<>(10);
+    private final SimpleArrayList<E> values;
+
+    public SimpleSet() {
+        this.values = new SimpleArrayList<>();
+    }
 
     public boolean add(E object) {
         boolean rsl = contains(object);
         if (!rsl) {
             values.add(object);
         }
-        return rsl;
+        return !rsl;
     }
 
     private boolean contains(E object) {
