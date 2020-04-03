@@ -39,6 +39,5 @@ public class SimpleHashChainTest {
         SimpleHashChain<User, String> map = new SimpleHashChain<User, String>();
         assertTrue(map.put(user1, "one"));
         assertFalse(map.put(user2, "two"));
-
     }
 }

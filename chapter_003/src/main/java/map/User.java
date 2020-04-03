@@ -43,23 +43,23 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        System.out.println("check equals");
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         User user = (User) o;
 
-        if (children != user.children) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        if (children != user.children) {
+            return false;
+        }
+        if (name != null ? !name.equals(user.name) : user.name != null) {
+            return false;
+        }
         return birthday != null ? birthday.equals(user.birthday) : user.birthday == null;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", children=" + children +
-
-                '}';
     }
 
     @Override
@@ -68,5 +68,10 @@ public class User {
         result = 31 * result + children;
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "name='" + name + '\'' + ", children=" + children + '}';
     }
 }

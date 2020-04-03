@@ -32,6 +32,10 @@ public class MapEntry<K, V> implements Map.Entry<K, V> {
         return result;
     }
 
+    public void setKey(K key) {
+        this.key = key;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -56,9 +60,6 @@ public class MapEntry<K, V> implements Map.Entry<K, V> {
 
     @Override
     public String toString() {
-        return "MapEntry{" +
-                "key=" + key +
-                ", value=" + value +
-                '}';
+        return "MapEntry{" + "key=" + key + ", value=" + value + '}';
     }
 }

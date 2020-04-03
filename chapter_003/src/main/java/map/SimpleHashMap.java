@@ -29,13 +29,18 @@ public class SimpleHashMap<K, V> {
     /**
      * хеш - функция
      */
-    @SuppressWarnings("checkstyle:WhitespaceAround")
-    private int hash(Object key) {
+    public int hash(Object key) {
         int h;
-        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+        if (key == null) {
+            return 0;
+        } else {
+            h = key.hashCode();
+            h = h ^ (h >>> 16); // ????
+        }
+        return h;
     }
 
-    private int index(K key) {
+    public int index(K key) {
         return (buckets.length - 1) & hash(key);
     }
 
@@ -86,6 +91,23 @@ public class SimpleHashMap<K, V> {
             }
         }
         return null;
+    }
+
+    public V remove(K key) {
+        V rsl = null;
+        if (buckets.length > 0) {
+            int index = index(key);
+                System.out.println("bucket " + buckets[index]);
+                for (MapEntry<K, V> iPair : buckets[index]
+                ) {
+                    if (iPair.getKey().equals(key)) {
+                        rsl = iPair.getValue();
+                        iPair.setValue(null);
+                        iPair.setKey(null);
+                    }
+                }
+        }
+        return (V) rsl.toString();
     }
 
     /**

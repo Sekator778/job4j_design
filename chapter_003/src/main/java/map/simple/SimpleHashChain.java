@@ -25,20 +25,12 @@ public class SimpleHashChain<K, V> implements Iterable<Node<K, V>> {
     private int hashCode(Object key) {
         int h;
         if (key == null) {
-            return 0;
+            h = 0;
         } else {
             h = key.hashCode();
-            h = h ^ (h >>> 16);
+            h = h ^ (h >>> 16); // ????
         }
         return h;
-    }
-
-    public int length() {
-        return nodes.length;
-    }
-
-    public int size() {
-        return size;
     }
 
     /**
@@ -69,7 +61,8 @@ public class SimpleHashChain<K, V> implements Iterable<Node<K, V>> {
             size++;
             modCount++;
         } else if (oldValue.getKey().equals(key)) {
-            rsl = false;
+            nodes[index] = new Node<>(key, value); // tyt можно не добавлять по условию а фолсить
+            rsl = true;
         }
         return rsl;
     }
@@ -121,6 +114,14 @@ public class SimpleHashChain<K, V> implements Iterable<Node<K, V>> {
             int index = index(hashCode(key));
             nodes[index] = new Node<>(key, value);
         }
+    }
+
+    public int length() {
+        return nodes.length;
+    }
+
+    public int size() {
+        return size;
     }
 
     @Override
