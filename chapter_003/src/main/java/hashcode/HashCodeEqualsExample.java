@@ -14,13 +14,17 @@ public class HashCodeEqualsExample {
     public static void main(String[] args) {
         System.out.println("hashCode user");
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2010, 4, 7);
         User user = new User("Alex", 2, calendar);
         for (int i = 0; i < 10; i++) {
             System.out.println(user.hashCode());
         }
         System.out.println("hashCode when generate SimpleHashMap");
         SimpleHashMap<User, Integer> map = new SimpleHashMap<>();
+        for (int i = 0; i < 10; i++) {
+            System.out.println(map.hash(user));
+        }
+        System.out.println("user change");
+        user.setChildren(3);
         for (int i = 0; i < 10; i++) {
             System.out.println(map.hash(user));
         }
