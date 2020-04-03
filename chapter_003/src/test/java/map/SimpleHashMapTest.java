@@ -6,7 +6,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -36,8 +35,10 @@ public class SimpleHashMapTest {
         User user2 = new User("Bob", 1, calendar1);
 
         SimpleHashMap<User, String> map = new SimpleHashMap<>();
-        System.out.println(map.put(user1, "one"));
-        System.out.println(map.put(user2, "one"));
+        assertThat(map.put(user1, "one"), is("one"));
+        assertThat(map.put(user2, "two"), is("one"));
+        assertThat(map.put(user1, "one"), is("one"));
+
     }
 
     @Test

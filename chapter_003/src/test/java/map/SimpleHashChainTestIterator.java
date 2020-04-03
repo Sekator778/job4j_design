@@ -101,7 +101,7 @@ public class SimpleHashChainTestIterator {
         User user10 = new User("ИншийМужик", 10, calendar1);
 
         SimpleHashChain<User, String> map = new SimpleHashChain<>();
-        map.put(user1, "one");
+        assertTrue(map.put(user1, "one"));
         map.put(user2, "two");
         map.put(user3, "three");
         map.put(user4, "four");

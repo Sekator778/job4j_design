@@ -22,7 +22,7 @@ public class SimpleHashChain<K, V> implements Iterable<Node<K, V>> {
      * @param key object
      * @return int 10 number
      */
-    private int hashCode(Object key) {
+    public int hashCode(Object key) {
         int h;
         if (key == null) {
             h = 0;
@@ -38,7 +38,7 @@ public class SimpleHashChain<K, V> implements Iterable<Node<K, V>> {
      * @param hash - hascode object
      * @return num cell table
      */
-    private int index(int hash) {
+    public int index(int hash) {
         return hash & (nodes.length - 1);
     }
 

@@ -73,6 +73,7 @@ public class SimpleHashMap<K, V> {
         }
         if (!found) {
             buckets[index].add(pair);
+            oldValue = value;
         }
         return oldValue;
     }
@@ -126,6 +127,4 @@ public class SimpleHashMap<K, V> {
         }
         return set;
     }
-
-
 }
