@@ -44,9 +44,9 @@ public class SimpleHashChain<K, V> implements Iterable<Node<K, V>> {
 
     /**
      * если ключ уже есть то возвращаем фолс
-     * @param key
-     * @param value
-     * @return
+     * @param key - key
+     * @param value - value
+     * @return - try if add elem
      */
     public boolean put(K key, V value) {
         boolean rsl = false;
@@ -62,7 +62,7 @@ public class SimpleHashChain<K, V> implements Iterable<Node<K, V>> {
             modCount++;
         } else if (oldValue.getKey().equals(key)) {
             nodes[index] = new Node<>(key, value); // tyt можно не добавлять по условию а фолсить
-            rsl = true;
+            rsl = false;
         }
         return rsl;
     }

@@ -48,9 +48,9 @@ public class SimpleHashMap<K, V> {
      * тут надо подкоректировать так как по условию замены нету
      * можно возвращать булен
      * вообщем упростить
-     * @param key
-     * @param value
-     * @return
+     * @param key - key
+     * @param value - value
+     * @return - value delete elem
      */
     public V put(K key, V value) {
         V oldValue = null;
@@ -97,7 +97,6 @@ public class SimpleHashMap<K, V> {
         V rsl = null;
         if (buckets.length > 0) {
             int index = index(key);
-                System.out.println("bucket " + buckets[index]);
                 for (MapEntry<K, V> iPair : buckets[index]
                 ) {
                     if (iPair.getKey().equals(key)) {
