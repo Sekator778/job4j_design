@@ -7,6 +7,12 @@ import java.util.StringJoiner;
 
 /**
  * @author Sekator  : mail sekator778@gmail.com
+ * линкед лист
+ * связный список на нодах
+ * однонаправленный
+ * с итератором токо вперед)
+ * еще имеет модификатор что дает нам возможность реализации
+ * fail-fast поведения для итератора
  */
 
 public class SimpleLinkedList<E> implements Iterable<E> {
@@ -33,6 +39,10 @@ public class SimpleLinkedList<E> implements Iterable<E> {
         size++;
     }
 
+    /**
+     * получаем удобочитаемый вывод с помощью стрингджойнтера
+     * @return String list
+     */
     @Override
     public String toString() {
         StringJoiner joiner = new StringJoiner(", ", "[", "]");
@@ -74,13 +84,21 @@ public class SimpleLinkedList<E> implements Iterable<E> {
         return tmp.data;
     }
 
+    /**
+     * delete last el into list
+     * @return del el value
+     */
     public E deleteLast() {
         return remove(size - 1);
     }
 
     /**
-     * тут надо еще раз все проверить с 0 елементом
-     *
+     * тут надо  с 0 елементом удаление норм так как сразу он
+     * стает на голову
+     * интерес тут в temp.setNext(temp.getNext().getNext());
+     * стаем на 2 вперед а сравниваем currentIndex == index - 1 предыдущий
+     * и удаляем следующий т.е. -1 возвращаем
+     * https://www.udemy.com/course/javarussia/learn/lecture/8982096#overview
      * @param index - индекс елемента на удаление
      * @return - дату удаленного елемента
      */
@@ -110,15 +128,35 @@ public class SimpleLinkedList<E> implements Iterable<E> {
         return rsl.data;
     }
 
+    /**
+     * iterator for list
+     * @return iterator
+     */
     @Override
     public Iterator<E> iterator() {
         return new SimpleLinkedListIterator();
     }
 
+    /**
+     *
+     * @return size list
+     */
+    public int size() {
+        return size;
+    }
+
+    /**
+     * класс работает на нодах
+     * также контролит свой счетчик который инициализируеться modCount
+     * с мейн класа и сравнивает их между собой на каждой итерации
+     */
     private class SimpleLinkedListIterator implements Iterator<E> {
         private Node<E> node = head;
         private int currentModCount;
 
+        /**
+         * конструктор с инициал счетчика
+         */
         public SimpleLinkedListIterator() {
             this.currentModCount = modCount;
         }
@@ -150,6 +188,11 @@ public class SimpleLinkedList<E> implements Iterable<E> {
         }
     }
 
+    /**
+     * нод сушность которая имеет внутри дату
+     * и линк на некст нод
+     * @param <E>
+     */
     private static class Node<E> {
         private final E data;
         private Node<E> next;

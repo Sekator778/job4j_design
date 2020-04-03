@@ -11,7 +11,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class SimpleLinkedListTest {
-    private final SimpleLinkedList<Integer> list = new SimpleLinkedList<Integer>();
+    private final SimpleLinkedList<Integer> list = new SimpleLinkedList<>();
 
     @Before
     public void setup() {
@@ -62,7 +62,25 @@ public class SimpleLinkedListTest {
 
     @Test(expected = NoSuchElementException.class)
     public void whenEmptyList() {
-        SimpleLinkedList list1 = new SimpleLinkedList();
+        SimpleLinkedList<Integer> list1 = new SimpleLinkedList<>();
         list1.get();
+    }
+
+    @Test
+    public void whenDeleteFirstElement() {
+        assertThat(list.get(0), is(1));
+        assertThat(list.size(), is(3));
+        assertThat(list.remove(0), is(1));
+        assertThat(list.size(), is(2));
+    }
+
+    @Test
+    public void whenDeleteAnotherElement() {
+        assertThat(list.get(1), is(2));
+        assertThat(list.remove(1), is(2));
+        assertThat(list.get(1), is(3));
+
+
+
     }
 }
