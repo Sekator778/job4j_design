@@ -2,6 +2,8 @@ package list;
 
 import org.junit.Test;
 
+import java.util.EmptyStackException;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -15,17 +17,22 @@ public class SimpleQueueTest {
     @Test
     public void whenPushAndPollElement() {
         SimpleQueue<Integer> queue = new SimpleQueue<>();
-        queue.push(1);
-        queue.push(2);
-        queue.push(3);
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
         assertThat(queue.poll(), is(1));
         assertThat(queue.poll(), is(2));
+        queue.add(4);
+        queue.add(5);
         assertThat(queue.poll(), is(3));
+        assertThat(queue.poll(), is(4));
+        assertThat(queue.poll(), is(5));
     }
 
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    @Test(expected = EmptyStackException.class)
     public void whenEmptyQueue() {
         SimpleQueue<Integer> queue = new SimpleQueue<>();
         queue.poll();
     }
+
 }

@@ -6,13 +6,31 @@ package list;
  */
 
 public class SimpleQueue<E> {
-    private SimpleStack<E> stack = new SimpleStack<E>();
+    private SimpleStack<E> stackIn = new SimpleStack<>();
+    private SimpleStack<E> stackOut = new SimpleStack<>();
+    private int size;
 
+    /**
+     * этот метод удаляет и возвращает заголовок очереди.
+     * Возвращает ноль, если очередь пуста
+     * наша очередь тут не доделана она прокидывает ексепшн сверху пришедший
+     * @return element
+     */
     public E poll() {
-        return stack.pop();
+        if (stackOut.empty()) {
+            while (!stackIn.empty()) {
+                stackOut.push(stackIn.pop());
+            }
+        }
+        return stackOut.pop();
     }
 
-    public void push(E value) {
-        stack.push(value);
+    /**
+     * этот метод используется для добавления элементов в конец очереди.
+     * @param value element for add to Queue
+     */
+    public void add(E value) {
+        size++;
+        stackIn.push(value);
     }
 }
