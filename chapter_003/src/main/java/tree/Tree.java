@@ -1,8 +1,6 @@
 package tree;
 
-import java.util.LinkedList;
-import java.util.Optional;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * простое дерево
@@ -10,10 +8,10 @@ import java.util.Queue;
  *
  * @param <E>
  */
-class Tree<E> implements SimpleTree<E> {
+public class Tree<E> implements SimpleTree<E> {
     private final Node<E> root;
 
-    Tree(final E root) {
+    public Tree(final E root) {
         this.root = new Node<>(root);
     }
 
@@ -22,8 +20,9 @@ class Tree<E> implements SimpleTree<E> {
      * В этом методе нужно проверить,
      * что значений parent и child еще нет в дереве.
      * Если они есть, то метод должен вернуть false.
+     *
      * @param parent parent
-     * @param child child
+     * @param child  child
      * @return result
      */
     @Override
@@ -45,6 +44,7 @@ class Tree<E> implements SimpleTree<E> {
      * в очередь добавляем весь лист rootA и так далее
      * не совсем понимаю почему тут возвращать надо опшионал
      * наверно для удобства работы с ним в методе адд
+     *
      * @param value - искомый елемент
      * @return object optional
      */
@@ -62,5 +62,80 @@ class Tree<E> implements SimpleTree<E> {
             data.addAll(el.getChildren());  // добавляем всех деток текущего узла
         }
         return rsl;
+    }
+
+    /**
+     * @return result true if every nod our tree have 0 or 2 child
+     */
+    public boolean isBinary() {
+        NodeIterator iterator = new NodeIterator();
+        while (iterator.hasNext()) {
+            int countChild = iterator.next().getChildren().size();
+            if (countChild != 2 && countChild != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * итератор для дерева
+     * @return елемент узла
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return new ValueIterator();
+    }
+
+    /**
+     * итератор по узлам дерева
+     * создаем итератор сразу с очередью из рутовского нода
+     * если берем узлы то и возвращаем узлы
+     */
+    private class NodeIterator implements Iterator<Node<E>> {
+        private final Queue<Node<E>> nodes = new LinkedList<>();
+
+        public NodeIterator() {
+            this.nodes.add(root);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !nodes.isEmpty();
+        }
+
+        /**
+         * принцып похож на метод файнд
+         * токо вытаскиваем нода remove так как там может уже и не быть ничего
+         * то remove не прервет ход выполнения если будет емпи то вернет нулл
+         * @return next node if this present
+         */
+        @Override
+        public Node<E> next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            Node<E> temp = nodes.remove();
+            nodes.addAll(temp.getChildren());
+            return temp;
+        }
+    }
+
+    /**
+     * класс обертка над нодовским итератором
+     * дает значение узла
+     */
+    private class ValueIterator implements Iterator<E> {
+        private final NodeIterator nodeIterator = new NodeIterator();
+
+        @Override
+        public boolean hasNext() {
+            return nodeIterator.hasNext();
+        }
+
+        @Override
+        public E next() {
+            return nodeIterator.next().getValue();
+        }
     }
 }
