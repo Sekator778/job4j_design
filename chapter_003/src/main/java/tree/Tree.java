@@ -36,7 +36,7 @@ class Tree<E> implements SimpleTree<E> {
         if (childrens.isPresent()) {  // If a value is present, returns true  если есть уже чайлд то наш код дубль не принимает
             return false;
         }
-        parents.get().add(new Node<>(child));
+        parents.get().add(new Node<>(child));  // прикольно даем чтобы добавить)
         return true;
     }
 

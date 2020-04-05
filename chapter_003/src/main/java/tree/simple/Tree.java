@@ -127,30 +127,24 @@ public class Tree {
                 parent.leftChild = null;
             } else {
                 parent.rightChild = null;
-            }
-        }
-        //если нет правого потомка, узел заменяется левым поддеревом
-        else if (current.rightChild == null) {
+            } //если нет правого потомка, узел заменяется левым поддеревом
+        } else if (current.rightChild == null) {
             if (current == root) {
                 root = current.leftChild;
             } else if (isLeftChild) {
                 parent.leftChild = current.leftChild;
             } else {
                 parent.rightChild = current.leftChild;
-            }
-        }
-        //если нет левого потомка, узел заменяется правым поддеревом
-        else if (current.leftChild == null) {
+            }  //если нет левого потомка, узел заменяется правым поддеревом
+        } else if (current.leftChild == null) {
             if (current == root) {
                 root = current.rightChild;
             } else if (isLeftChild) {
                 parent.leftChild = current.rightChild;
             } else {
                 parent.rightChild = current.rightChild;
-            }
-        }
-        //удаляемый узел имеет двух потомков
-        else {
+            }     //удаляемый узел имеет двух потомков
+        } else {
             Node successor = getSuccessor(current);
 
             if (current == root) {
@@ -160,7 +154,6 @@ public class Tree {
             } else {
                 parent.rightChild = successor;
             }
-
             //приемник связывается с левым потомком current
             successor.leftChild = current.leftChild;
         }
@@ -187,6 +180,8 @@ public class Tree {
                 System.out.print("\nPostorder traversal: ");
                 postOrder(root);
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + traverseType);
         }
     }
 
