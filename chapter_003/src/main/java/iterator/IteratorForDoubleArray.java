@@ -2,6 +2,9 @@ package iterator;
 
 import java.util.Iterator;
 
+/**
+ * итератор для двухмерного массива.
+ */
 public class IteratorForDoubleArray implements Iterator<Integer> {
     private final int[][] values;
     private int x = 0;
@@ -16,6 +19,11 @@ public class IteratorForDoubleArray implements Iterator<Integer> {
         return ((x < values.length - 1) || (y < values[x].length));
     }
 
+    /**
+     *сначало идем по Y если жошли до конца values[x].length - 1) < y
+     * то спускаемся на x++ , а y = 0
+     * @return елемент
+     */
     @Override
     public Integer next() {
         int rsl;

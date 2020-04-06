@@ -2,6 +2,9 @@ package iterator;
 
 import java.util.Iterator;
 
+/**
+ * итератор для четных елементов масива
+ */
 public class IteratorForPairIndexNumber implements Iterator<Integer> {
     private final int[] values;
     private int index = 0;
@@ -15,6 +18,10 @@ public class IteratorForPairIndexNumber implements Iterator<Integer> {
         return values.length > index;
     }
 
+    /**
+     * тут просто чекаем пару
+     * @return - елемент
+     */
     @Override
     public Integer next() {
         if ((index + 2) < values.length) {

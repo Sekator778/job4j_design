@@ -1,5 +1,7 @@
 package generic;
 
+import list.SimpleArray;
+
 /**
  * @author Sekator  : mail sekator778@gmail.com
  */
