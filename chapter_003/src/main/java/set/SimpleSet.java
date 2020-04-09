@@ -13,11 +13,7 @@ import java.util.Iterator;
  */
 
 public class SimpleSet<E> implements Iterable<E> {
-    private final SimpleArrayList<E> values;
-
-    public SimpleSet() {
-        this.values = new SimpleArrayList<>();
-    }
+    private final SimpleArrayList<E> values = new SimpleArrayList<>();
 
     public boolean add(E object) {
         boolean rsl = contains(object);
@@ -27,6 +23,12 @@ public class SimpleSet<E> implements Iterable<E> {
         return !rsl;
     }
 
+    /**
+     * метод присутствует в сетах для
+     * того что бы не было дубликатов e.equals(object)
+     * @param object - data
+     * @return result compare
+     */
     private boolean contains(E object) {
         boolean rsl = false;
         for (E e : values
