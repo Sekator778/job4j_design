@@ -10,7 +10,7 @@ import java.util.EmptyStackException;
  */
 
 public class SimpleStack<E> {
-    private int size = 0;
+//    private int size = 0;
     private SimpleLinkedList<E> linked = new SimpleLinkedList<>();
 
     /**
@@ -18,7 +18,7 @@ public class SimpleStack<E> {
      * @param value element
      */
     public void push(E value) {
-        size++;
+//        size++;
         linked.add(value);
     }
 
@@ -32,7 +32,7 @@ public class SimpleStack<E> {
         if (empty()) {
             throw new EmptyStackException();
         }
-        size--;
+//        size--;
         return linked.deleteLast();
     }
 
@@ -42,7 +42,7 @@ public class SimpleStack<E> {
      * @return result
      */
     public boolean empty() {
-        return size == 0;
+        return linked.size() == 0;
     }
 
     /**
@@ -65,7 +65,7 @@ public class SimpleStack<E> {
      * @return position element to stack or -1 if no find
      */
     public int search(E element) {
-        int rsl = size;
+        int rsl = linked.size();
         for (E e : linked
         ) {
             rsl--;
@@ -74,5 +74,9 @@ public class SimpleStack<E> {
             }
         }
         return --rsl;
+    }
+
+    public int size() {
+        return linked.size();
     }
 }

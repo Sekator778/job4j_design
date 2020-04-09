@@ -84,4 +84,15 @@ public class SimpleStackTest {
         assertThat(stack.search(23), is(-1));
     }
 
+    @Test
+    public void whenTestSizeStack() {
+        SimpleStack<Integer> stack = new SimpleStack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        assertThat(stack.size(), is(4));
+        stack.pop();
+        assertThat(stack.size(), is(3));
+    }
 }
