@@ -1,13 +1,12 @@
 package list;
 
 /**
- * @author Sekator  : mail sekator778@gmail.com
  * очередь -> стеке стек -> линкедлисте
  */
 
 public class SimpleQueue<E> {
-    private SimpleStack<E> stackIn = new SimpleStack<>();
-    private SimpleStack<E> stackOut = new SimpleStack<>();
+    private SimpleStack<E> input = new SimpleStack<>();
+    private SimpleStack<E> output = new SimpleStack<>();
     private int size;
 
     /**
@@ -17,12 +16,13 @@ public class SimpleQueue<E> {
      * @return element
      */
     public E poll() {
-        if (stackOut.empty()) {
-            while (!stackIn.empty()) {
-                stackOut.push(stackIn.pop());
+        if (output.empty()) {
+            while (!input.empty()) {
+                output.push(input.pop());
             }
         }
-        return stackOut.pop();
+        size--;
+        return output.pop();
     }
 
     /**
@@ -31,6 +31,14 @@ public class SimpleQueue<E> {
      */
     public void add(E value) {
         size++;
-        stackIn.push(value);
+        input.push(value);
+    }
+
+    /**
+     * return length queue
+     * @return length
+     */
+    public int size() {
+        return size;
     }
 }

@@ -35,4 +35,13 @@ public class SimpleQueueTest {
         queue.poll();
     }
 
+    @Test
+    public void whenSizeQueueShouldReturn10() {
+        SimpleQueue<Integer> queue = new SimpleQueue<>();
+        for (int i = 0; i <= 10; i++) {
+            queue.add(i);
+        }
+        queue.poll();
+        assertThat(queue.size(), is(10));
+    }
 }

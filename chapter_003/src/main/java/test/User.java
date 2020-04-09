@@ -15,4 +15,12 @@ public class User {
         this.name = name;
         this.mails = mails;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public HashSet<String> getMails() {
+        return mails;
+    }
 }

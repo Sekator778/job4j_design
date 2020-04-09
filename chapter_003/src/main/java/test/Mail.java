@@ -27,7 +27,13 @@ public class Mail {
 
         HashSet<String> user5Set = new HashSet<>();
         user5Set.add("xyz@pisem.net");
-
+//-> aaa@bbb.ru : user4
+//-> ups@pisem.net : user4
+//-> lol@mail.ru : user1
+//-> xxx@ya.ru : user1
+//-> vasya@pupkin.com : user3  **
+//-> foo@gmail.com : user2
+//-> xyz@pisem.net : user5   **
 
         User user1 = new User("user1", user1Set);
         User user2 = new User("user2", user2Set);
@@ -42,22 +48,31 @@ public class Mail {
                 user4,
                 user5
         ));
-        Map<String, User> output = convert(userList);
-        output.forEach((k, v) -> System.out.println("-> " + k + " : " + v.getName()));
+        Map<User, Set<String>> output = convert(userList);
+        output.forEach((k, v) -> System.out.println("-> " + k.getName() + " : " + v.toString()));
 
     }
 
-    public static Map<String, User> convert(List<User> input) {
-        Map<String, User> result = new HashMap<>();
+    public static  Map<User, Set<String>> convert(List<User> input) {
+        Map<String, User> one = new HashMap<>();
+        Map<User, Set<String>> two = new HashMap<>();
+
+        HashSet<String> addMail = new HashSet<>();
         for (User  user : input
              ) {
             for (String mail : user.mails
                  ) {
-                result.put(mail, user);
+                one.put(mail, user);
+                if (!one.containsKey(mail)) { /////////////////////////////////
+                    assert addMail != null;
+                    addMail.addAll(user.mails);
+                    two.put(user, addMail);
+                } else {
+                    two.put(user, one.get(mail).mails);
+                }
+                addMail = null;
             }
         }
-        return result;
+        return two;
     }
-
-
 }
