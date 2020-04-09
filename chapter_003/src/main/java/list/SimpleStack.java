@@ -10,7 +10,6 @@ import java.util.EmptyStackException;
  */
 
 public class SimpleStack<E> {
-//    private int size = 0;
     private SimpleLinkedList<E> linked = new SimpleLinkedList<>();
 
     /**
@@ -18,7 +17,6 @@ public class SimpleStack<E> {
      * @param value element
      */
     public void push(E value) {
-//        size++;
         linked.add(value);
     }
 
@@ -32,7 +30,6 @@ public class SimpleStack<E> {
         if (empty()) {
             throw new EmptyStackException();
         }
-//        size--;
         return linked.deleteLast();
     }
 
