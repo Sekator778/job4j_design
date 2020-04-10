@@ -1,0 +1,14 @@
+-- Подключитесь от имени пользователя postgres:
+su - postgres
+--Добавление нового пользователя main and set password 
+createuser -P -s -e main
+--подключения к СУБД PostgreSQL
+psql
+-- create database test_db
+create database test_db with owner main;
+-- подключиться к базе
+\c test_db;
+-- добавим все права на использование базы test_db учетной записи main
+grant all privileges on all tables in schema public to "main";
+//-------------------------------------
+

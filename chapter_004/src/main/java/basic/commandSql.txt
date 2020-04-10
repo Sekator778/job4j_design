@@ -6,13 +6,15 @@ psql -U user_name -d database_name -h 127.0.0.1 -W
 
 //-----------------------------------------
 ## полезные команды - https://kamaok.org.ua/?p=961
+\l  - view all database;
+\dt  - view all tables in current db
+\du - Просмотр списка всех пользователей и их привилегий
+select * from pg_user; - Для просмотра всех пользователей СУБД
 //====================
 + create table =
 CREATE TABLE cities (
-name
-varchar(80),
-location
-point
+name varchar(80),
+location point
 );
 
 + insert =
@@ -67,6 +69,9 @@ DELETE FROM weather WHERE city = 'Hayward';
 
 DELETE FROM имя_таблицы;
 
++ удаление таблицы всей
+DROP TABLE имя_таблицы;
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 + Представления
 CREATE VIEW myview AS
@@ -74,8 +79,19 @@ SELECT city, temp_lo, temp_hi, prcp, date, location
 FROM weather, cities
 WHERE city = name;
 SELECT * FROM myview;
+Вы можете создать представление по данному запросу, фактически присвоить
+имя запросу, а затем обращаться к нему как к обычной таблице:
 
++ Внешние ключи
+хотите добиться, чтобы никто не мог вставить в таблицу weather строки, для которых не находится
+соответствующая строка в таблице cities. Это называется обеспечением ссылочной целостности
+данных.
+CREATE TABLE cities (
+city varchar(80) primary key, location point);
+CREATE TABLE weather (city varchar(80) references cities(city),
+temp_lo int, temp_hi int, prcp real, date date );
 
++ Транзакции
 
 
 
