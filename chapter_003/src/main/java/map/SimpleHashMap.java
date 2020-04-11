@@ -21,8 +21,13 @@ public class SimpleHashMap<K, V> {
      */
     public void viewTable() {
         for (int i = 0; i < SIZE; i++) {
-            System.out.print(i + ". ");
-            buckets[i].toString();
+
+            if (buckets[i] == null) {
+                continue;
+            } else {
+                System.out.print(i + ". ");
+                buckets[i].forEach(System.out::println);
+            }
         }
     }
 
@@ -35,7 +40,7 @@ public class SimpleHashMap<K, V> {
             return 0;
         } else {
             h = key.hashCode();
-            h = h ^ (h >>> 16); // ????
+            h = h ^ (h >>> 16);
         }
         return h;
     }
@@ -48,7 +53,8 @@ public class SimpleHashMap<K, V> {
      * тут надо подкоректировать так как по условию замены нету
      * можно возвращать булен
      * вообщем упростить
-     * @param key - key
+     *
+     * @param key   - key
      * @param value - value
      * @return - value delete elem
      */
@@ -58,7 +64,7 @@ public class SimpleHashMap<K, V> {
         if (buckets[index] == null) {
             buckets[index] = new SimpleLinkedList<MapEntry<K, V>>();
         }
-        SimpleLinkedList<MapEntry<K, V>> bucket = buckets[index];
+        SimpleLinkedList<MapEntry<K, V>> bucket = buckets[index]; // наш лист на нодах держит внутри в ноде мап энтри прикольно public static interface Map.Entry<K,V>
         MapEntry<K, V> pair = new MapEntry<>(key, value);
         boolean found = false;
         Iterator<MapEntry<K, V>> iterator = bucket.iterator();
@@ -77,6 +83,7 @@ public class SimpleHashMap<K, V> {
         }
         return oldValue;
     }
+
     /**
      * получение елемента по ключу
      */
@@ -86,7 +93,7 @@ public class SimpleHashMap<K, V> {
             return null;
         }
         for (MapEntry<K, V> iPair : buckets[index]
-             ) {
+        ) {
             if (iPair.getKey().equals(key)) {
                 return iPair.getValue();
             }
@@ -98,14 +105,12 @@ public class SimpleHashMap<K, V> {
         V rsl = null;
         if (buckets.length > 0) {
             int index = index(key);
-                for (MapEntry<K, V> iPair : buckets[index]
-                ) {
-                    if (iPair.getKey().equals(key)) {
-                        rsl = iPair.getValue();
-                        iPair.setValue(null);
-                        iPair.setKey(null);
-                    }
+            for (int i = 0; i < buckets[index].size(); i++) {
+                if (buckets[index].get(i).getKey().equals(key)) {
+                    rsl = buckets[index].get(i).getValue();
+                    buckets[index].remove(i);
                 }
+            }
         }
         return (V) rsl.toString();
     }
@@ -116,12 +121,12 @@ public class SimpleHashMap<K, V> {
     public Set<Map.Entry<K, V>> entrySet() {
         Set<Map.Entry<K, V>> set = new HashSet<Map.Entry<K, V>>();
         for (SimpleLinkedList<MapEntry<K, V>> bucket : buckets
-             ) {
+        ) {
             if (bucket == null) {
                 continue;
             }
             for (MapEntry<K, V> mpair : bucket
-                 ) {
+            ) {
                 set.add(mpair);
             }
         }

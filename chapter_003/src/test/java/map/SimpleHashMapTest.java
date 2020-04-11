@@ -41,15 +41,15 @@ public class SimpleHashMapTest {
 
     }
 
+    /**
+     * не помню для чего это надо всегда комменты писать
+     */
     @Test
     public void testHashCode() {
         Calendar calendar1 = new GregorianCalendar();
         User user1 = new User("Bob", 1, calendar1);
         SimpleHashMap<String, String> map = new SimpleHashMap<>();
         SimpleHashMap<User, String> map1 = new SimpleHashMap<>();
-        String s = "ome";
-        System.out.println(map.index(s));
-        System.out.println(map1.index(user1));
     }
 
     @Test
@@ -76,6 +76,8 @@ public class SimpleHashMapTest {
         map.put(user8, "eight");
         map.put(user9, "nine");
         map.put(user10, "ten");
+// посмотреть где кто лежит интересно
+        map.viewTable();
 
         assertThat(map.get(user1), is("one"));
         assertThat(map.get(user2), is("two"));
@@ -87,11 +89,11 @@ public class SimpleHashMapTest {
         assertThat(map.get(user8), is("eight"));
         assertThat(map.get(user9), is("nine"));
         assertThat(map.get(user10), is("ten"));
-
         assertThat(map.remove(user1), is("one"));
-
-
-
-
+        assertThat(map.remove(user3), is("three"));
+        assertThat(map.remove(user5), is("five"));
+        assertThat(map.remove(user7), is("seven"));
     }
+
+
 }

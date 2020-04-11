@@ -1,9 +1,5 @@
 package list;
 
-/**
- * @author Sekator  : mail sekator778@gmail.com
- */
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.StringJoiner;
@@ -13,7 +9,7 @@ public class ForwardLinked<T> implements Iterable<T> {
 
     public static void main(String[] args) {
         ForwardLinked<Integer> list = new ForwardLinked<>();
-        for (int c = 1; c <= 4; c++) {
+        for (int c = 1; c <= 3; c++) {
             list.add(c);
         }
 
@@ -37,28 +33,18 @@ public class ForwardLinked<T> implements Iterable<T> {
         tail.next = node;
     }
 
-    //idem по списку, первому next указываешь null, а каждому последующему предыдущий
-    public void revert() {
+    void revert() {
         if (head.next == null) {
             return;
         }
-        //1 - 2 - 3 - 4
-//       Node<T> temp = head.next;            // temp = 2
-//        head.next = null;                   // 2 nod = null
-//        while (temp != null) {              //
-//            Node<T> next = temp.next;       // next = 3
-//            temp.next = head.next;          // 3 = 2
-//            head.next = temp;               // null = 2
-//            temp = next;                    // 2 = 3
-//        }
-        Node<T> temp = head;
-        while (temp.next != null) {
-            Node<T> next = temp.next;
-            temp.next = next.next;
-            next.next = temp;
-            Node<T> htemp = head;
-            head = next;
-            head.next = htemp;
+        Node<T> node = head;
+        Node<T> previous = null;
+        while (node != null) {         //next item
+            Node<T> tmp = node.next;      //swap items
+            node.next = previous;
+            previous = node;
+            head = node;              //next item
+            node = tmp;
         }
     }
 

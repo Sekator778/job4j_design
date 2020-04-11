@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 /**
  * @author Sekator  : mail sekator778@gmail.com
+ * есть два слова или вообще будь чего узнать состоят ли они
+ * из тех же символов за время О(n)
  */
 
 public class ReverseWord {
@@ -21,13 +23,11 @@ public class ReverseWord {
         for (int i = 0; i < strings1.length; i++) {
             map.put(strings1[i], 1);
         }
-        int before = map.size();
         for (int i = 0; i < strings2.length; i++) {
-            map.put(strings2[i], 1);
-        }
-        if (before != map.size()) {
-            System.out.println("Слова состоят из разных символов");
-        } else {
+            if (!map.containsKey(strings2[i])) {
+                System.out.println("Слова состоят из разных символов");
+                break;
+            }
             System.out.println("Слова состоят из одинаковых символов");
         }
     }

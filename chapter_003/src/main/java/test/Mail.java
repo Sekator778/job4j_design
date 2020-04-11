@@ -59,8 +59,8 @@ public class Mail {
                     one.get(mail).mails.addAll(user.mails);
                     two.put(one.get(mail), one.get(mail).mails);
                 }
-                one.get(mail).mails.addAll(user.mails);
-                two.put(input.get(0), input.get(0).mails);
+//                one.get(mail).mails.addAll(user.mails);
+//                two.put(input.get(0), input.get(0).mails);
 
             }
         }

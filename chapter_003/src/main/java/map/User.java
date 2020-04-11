@@ -43,7 +43,6 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        System.out.println("check equals");
         if (this == o) {
             return true;
         }

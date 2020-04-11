@@ -1,9 +1,5 @@
 package list;
 
-/**
- * @author Sekator  : mail sekator778@gmail.com
- */
-
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -28,9 +24,7 @@ public class ForwardLinkedTest {
         ForwardLinked<Integer> linked = new ForwardLinked<>();
         linked.add(1);
         linked.add(2);
-        System.out.println(linked.toString());
         linked.revert();
-        System.out.println(linked.toString());
 
         Iterator<Integer> it = linked.iterator();
         assertThat(it.next(), is(2));
