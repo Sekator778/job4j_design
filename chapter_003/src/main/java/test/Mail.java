@@ -5,7 +5,6 @@ import java.util.*;
 /**
  *
  */
-
 public class Mail {
     public static void main(String[] args) {
         HashSet<String> user1Set = new HashSet<>();
@@ -27,19 +26,14 @@ public class Mail {
 
         HashSet<String> user5Set = new HashSet<>();
         user5Set.add("xyz@pisem.net");
-//-> aaa@bbb.ru : user4
-//-> ups@pisem.net : user4
-//-> lol@mail.ru : user1
-//-> xxx@ya.ru : user1
-//-> vasya@pupkin.com : user3  **
-//-> foo@gmail.com : user2
-//-> xyz@pisem.net : user5   **
+
 
         User user1 = new User("user1", user1Set);
         User user2 = new User("user2", user2Set);
         User user3 = new User("user3", user3Set);
         User user4 = new User("user4", user4Set);
         User user5 = new User("user5", user5Set);
+
 
         List<User> userList = new ArrayList<>(List.of(
                 user1,
@@ -53,24 +47,21 @@ public class Mail {
 
     }
 
-    public static  Map<User, Set<String>> convert(List<User> input) {
+    public static Map<User, Set<String>> convert(List<User> input) {
         Map<String, User> one = new HashMap<>();
         Map<User, Set<String>> two = new HashMap<>();
-
-        HashSet<String> addMail = new HashSet<>();
-        for (User  user : input
-             ) {
+        for (User user : input
+        ) {
             for (String mail : user.mails
-                 ) {
-                one.put(mail, user);
-                if (!one.containsKey(mail)) { /////////////////////////////////
-                    assert addMail != null;
-                    addMail.addAll(user.mails);
-                    two.put(user, addMail);
-                } else {
-                    two.put(user, one.get(mail).mails);
+            ) {
+                one.putIfAbsent(mail, user);
+                if (!one.containsValue(user)) {
+                    one.get(mail).mails.addAll(user.mails);
+                    two.put(one.get(mail), one.get(mail).mails);
                 }
-                addMail = null;
+                one.get(mail).mails.addAll(user.mails);
+                two.put(input.get(0), input.get(0).mails);
+
             }
         }
         return two;
