@@ -9,11 +9,11 @@ public class ForwardLinked<T> implements Iterable<T> {
 
     public static void main(String[] args) {
         ForwardLinked<Integer> list = new ForwardLinked<>();
-        for (int c = 1; c <= 3; c++) {
+        for (int c = 1; c <= 1; c++) {
             list.add(c);
         }
 
-        System.out.println(list.toString());
+//        System.out.println(list.toString());
         list.revert();
         System.out.println(list.toString());
 
@@ -33,18 +33,34 @@ public class ForwardLinked<T> implements Iterable<T> {
         tail.next = node;
     }
 
+    /**
+     * реверс связного списка
+     * тут все растянуто для понятности
+     * можно оптимизировать
+     * меньше строк
+     */
     void revert() {
+        //есть ли список
+        if (head == null) {
+            throw new IllegalArgumentException("empty chain");
+        }
+        //тут типа для оптимизации мы сразу выходим
+        // из метода когда список из 1го елемента
         if (head.next == null) {
             return;
         }
-        Node<T> node = head;
+        // делаем 3 нода некст карент и превиос
+        Node<T> current = head;
         Node<T> previous = null;
-        while (node != null) {         //next item
-            Node<T> tmp = node.next;      //swap items
-            node.next = previous;
-            previous = node;
-            head = node;              //next item
-            node = tmp;
+        Node<T> next = head.next;
+        // на котором стоим чекаем или он уже не нулл тоесть конец
+        while (current != null) {         //next item
+            next = current.next;       ///
+            current.next = previous;    // ////swap items
+            previous = current;       ///
+
+            head = current;              //next item
+            current = next;             //тут просто вперед двигаем
         }
     }
 

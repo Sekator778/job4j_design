@@ -13,8 +13,16 @@ import java.util.Set;
 
 public class SimpleHashMap<K, V> {
     static final int SIZE = 77;
+    static final float DEFAULT_LOAD_FACTOR = 0.75f;
+    private int count;
+    private int loadFactor;
+    private int threshold;
 
     SimpleLinkedList<MapEntry<K, V>>[] buckets = new SimpleLinkedList[SIZE];
+
+    public int getCount() {
+        return count;
+    }
 
     /**
      * вывод карты на экран
@@ -30,6 +38,12 @@ public class SimpleHashMap<K, V> {
             }
         }
     }
+
+//    private void checkSize() {
+//        loadFactor = SIZE / count;
+//        int currentThreshold = count * loadFactor;
+//        if (threshold <= )
+//    }
 
     /**
      * хеш - функция
@@ -80,6 +94,7 @@ public class SimpleHashMap<K, V> {
         if (!found) {
             buckets[index].add(pair);
             oldValue = value;
+            count++;
         }
         return oldValue;
     }
@@ -109,6 +124,7 @@ public class SimpleHashMap<K, V> {
                 if (buckets[index].get(i).getKey().equals(key)) {
                     rsl = buckets[index].get(i).getValue();
                     buckets[index].remove(i);
+                    count--;
                 }
             }
         }

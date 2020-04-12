@@ -76,8 +76,9 @@ public class SimpleHashMapTest {
         map.put(user8, "eight");
         map.put(user9, "nine");
         map.put(user10, "ten");
+        System.out.println(map.getCount());
 // посмотреть где кто лежит интересно
-        map.viewTable();
+//        map.viewTable();
 
         assertThat(map.get(user1), is("one"));
         assertThat(map.get(user2), is("two"));
@@ -93,6 +94,8 @@ public class SimpleHashMapTest {
         assertThat(map.remove(user3), is("three"));
         assertThat(map.remove(user5), is("five"));
         assertThat(map.remove(user7), is("seven"));
+        System.out.println(map.getCount());
+
     }
 
 
