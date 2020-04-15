@@ -8,6 +8,7 @@ import java.util.*;
  * некоторые методы или переменные добавлены или уровень оступа шире чем надо
  * для того чтобы видеть что внутри происходит
  * как вот метод getCount -- Size
+ *
  * @author Sekator  : mail sekator778@gmail.com
  */
 
@@ -28,6 +29,7 @@ public class SimpleHashMap<K, V> {
 
     /**
      * размер нашей мапы общий
+     *
      * @return количество всех ячеек
      */
     public int size() {
@@ -36,6 +38,8 @@ public class SimpleHashMap<K, V> {
 
     /**
      * вывод карты на экран
+     * удобство в том что мы наглядно видим связной список
+     * в бакете
      */
     public void viewTable() {
         for (int i = 0; i < size; i++) {
@@ -46,6 +50,11 @@ public class SimpleHashMap<K, V> {
                 buckets[i].forEach(System.out::println);
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "SimpleHashMap{" + "buckets=" + Arrays.toString(buckets) + '}';
     }
 
     /**
@@ -114,7 +123,7 @@ public class SimpleHashMap<K, V> {
         ) {
             if (bucket != null) {
                 for (MapEntry<K, V> pair : bucket
-                     ) {
+                ) {
                     put(pair.getKey(), pair.getValue());
                 }
             }
@@ -148,6 +157,7 @@ public class SimpleHashMap<K, V> {
                     rsl = buckets[index].get(i).getValue();
                     buckets[index].remove(i);
                     count--;
+                    break;
                 }
             }
         }

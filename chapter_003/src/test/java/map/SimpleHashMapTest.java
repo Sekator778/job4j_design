@@ -95,7 +95,7 @@ public class SimpleHashMapTest {
         map.put(user10, "ten");
         assertThat(map.getCount(), is(10));
 // посмотреть где кто лежит интересно
-//        map.viewTable();
+        map.viewTable();
 
         assertThat(map.get(user1), is("one"));
         assertThat(map.get(user2), is("two"));
@@ -124,5 +124,22 @@ public class SimpleHashMapTest {
         for (int i = 0; i < 23; i++) {
             assertThat(map.index(null), is(0));
         }
+    }
+
+    @Test
+    public void testToString() {
+        Calendar calendar1 = new GregorianCalendar();
+        User user1 = new User("Bob", 1, calendar1);
+        User user2 = new User("Степан", 2, calendar1);
+        User user3 = new User("Микола", 3, calendar1);
+        User user4 = new User("Богдан", 4, calendar1);
+        SimpleHashMap<User, String> map = new SimpleHashMap<>();
+        map.put(user1, "one");
+        map.put(user2, "two");
+        map.put(user3, "three");
+        map.put(user4, "four");
+
+        System.out.println(map);
+
     }
 }
