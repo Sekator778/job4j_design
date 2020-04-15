@@ -28,12 +28,11 @@ public class UsageLog4j {
         float fl = 7.0f;
         double d = 1.123d;
         long lg = 23456789122345L;
-        LOG.info("This a {} primitive type char {}, byte {}, our beloved integer" +
-                " {}, редко используемый float {} с точкой дабл {}, большой лонгггг" +
-                " {} говрящий да или нет boolean {}", st, ch, bt, i, fl, d, lg, rsl);
+        LOG.info("This a {} primitive type char {}, byte {}, our beloved integer {}, редко используемый float {} с точкой дабл {}, большой лонгггг {} говрящий да или нет boolean {}", st, ch, bt, i, fl, d, lg, rsl);
         exceptionToLog();
 
     }
+
     public static void exceptionToLog() {
         try {
             throw new Exception("Not supported code");
