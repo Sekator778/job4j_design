@@ -75,14 +75,14 @@ public class SimpleHashMapTest {
         assertThat(map.size(), is(4));
         map.put(user5, "five");
         // посмотреть где кто лежит интересно
-//        map.viewTable();
+//        System.out.println(map);
         assertThat(map.getCount(), is(5));
         // а так если через threshold
         assertThat(map.size(), is(8));
         map.put(user6, "six");
         // посмотреть где кто лежит интересно
 //        System.out.println("after resize");
-//        map.viewTable();
+//        System.out.println(map);
         assertThat(map.getCount(), is(6));
         assertThat(map.size(), is(8));
         // странным образом настроился тут хешфункция что ресайзает после 7 елемента так будет
@@ -94,8 +94,7 @@ public class SimpleHashMapTest {
         map.put(user9, "nine");
         map.put(user10, "ten");
         assertThat(map.getCount(), is(10));
-// посмотреть где кто лежит интересно
-        map.viewTable();
+        System.out.println(map);
 
         assertThat(map.get(user1), is("one"));
         assertThat(map.get(user2), is("two"));
@@ -138,8 +137,5 @@ public class SimpleHashMapTest {
         map.put(user2, "two");
         map.put(user3, "three");
         map.put(user4, "four");
-
-        System.out.println(map);
-
     }
 }

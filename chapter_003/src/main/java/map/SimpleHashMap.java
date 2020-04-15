@@ -38,23 +38,21 @@ public class SimpleHashMap<K, V> {
 
     /**
      * вывод карты на экран
-     * удобство в том что мы наглядно видим связной список
-     * в бакете
      */
-    public void viewTable() {
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < size; i++) {
             if (buckets[i] == null) {
                 continue;
             } else {
-                System.out.print(i + ". ");
-                buckets[i].forEach(System.out::println);
+                sb.append(i);
+                buckets[i].forEach(x -> sb.append(x.toString()).append(" next nod "));
+                sb.append("\n");
             }
         }
-    }
-
-    @Override
-    public String toString() {
-        return "SimpleHashMap{" + "buckets=" + Arrays.toString(buckets) + '}';
+        return sb.toString();
     }
 
     /**
