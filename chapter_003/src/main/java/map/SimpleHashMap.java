@@ -12,13 +12,12 @@ import java.util.Set;
  */
 
 public class SimpleHashMap<K, V> {
-    static final int SIZE = 77;
+    static int size = 4;
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
     private int count;
-    private int loadFactor;
-    private int threshold;
+    private float loadFactor;
 
-    SimpleLinkedList<MapEntry<K, V>>[] buckets = new SimpleLinkedList[SIZE];
+    SimpleLinkedList<MapEntry<K, V>>[] buckets = new SimpleLinkedList[size];
 
     public int getCount() {
         return count;
@@ -28,7 +27,7 @@ public class SimpleHashMap<K, V> {
      * вывод карты на экран
      */
     public void viewTable() {
-        for (int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < size; i++) {
 
             if (buckets[i] == null) {
                 continue;
@@ -39,11 +38,10 @@ public class SimpleHashMap<K, V> {
         }
     }
 
-//    private void checkSize() {
-//        loadFactor = SIZE / count;
-//        int currentThreshold = count * loadFactor;
-//        if (threshold <= )
-//    }
+    private boolean checkSize() {
+        loadFactor = (float) size / count;
+        return DEFAULT_LOAD_FACTOR < loadFactor;
+    }
 
     /**
      * хеш - функция
@@ -73,6 +71,11 @@ public class SimpleHashMap<K, V> {
      * @return - value delete elem
      */
     public V put(K key, V value) {
+        if (!checkSize()) {
+            System.out.println(checkSize());
+            size = size * 2;
+            resize();
+        }
         V oldValue = null;
         int index = index(key);
         if (buckets[index] == null) {
@@ -97,6 +100,16 @@ public class SimpleHashMap<K, V> {
             count++;
         }
         return oldValue;
+    }
+
+    private void resize() {
+        System.out.println("new goooooo!!!!!" + size);
+        SimpleLinkedList<MapEntry<K, V>>[] oldBuckets = buckets;
+        buckets = new SimpleLinkedList[size];
+        for (SimpleLinkedList<MapEntry<K, V>> bucket : oldBuckets
+        ) {
+            bucket.forEach(System.out::println);
+        }
     }
 
     /**

@@ -7,6 +7,7 @@ package map.simple;
 public class Node<K, V> {
     private final K key;
     private final V value;
+    private Node next;
 
 
     public Node(K key, V value) {
@@ -20,6 +21,14 @@ public class Node<K, V> {
 
     public V getValue() {
         return value;
+    }
+
+    public Node getNext() {
+        return next;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
     }
 
     @Override
