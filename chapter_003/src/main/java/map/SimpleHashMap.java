@@ -2,12 +2,12 @@ package map;
 
 import list.SimpleLinkedList;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
+ * некоторые методы или переменные добавлены или уровень оступа шире чем надо
+ * для того чтобы видеть что внутри происходит
+ * как вот метод getCount -- Size
  * @author Sekator  : mail sekator778@gmail.com
  */
 
@@ -15,12 +15,23 @@ public class SimpleHashMap<K, V> {
     static int size = 4;
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
     private int count;
-    private float loadFactor;
-
+    private int threshold;
     SimpleLinkedList<MapEntry<K, V>>[] buckets = new SimpleLinkedList[size];
 
     public int getCount() {
         return count;
+    }
+
+    public SimpleHashMap() {
+        this.threshold = (int) (size * DEFAULT_LOAD_FACTOR);
+    }
+
+    /**
+     * размер нашей мапы общий
+     * @return количество всех ячеек
+     */
+    public int size() {
+        return size;
     }
 
     /**
@@ -28,7 +39,6 @@ public class SimpleHashMap<K, V> {
      */
     public void viewTable() {
         for (int i = 0; i < size; i++) {
-
             if (buckets[i] == null) {
                 continue;
             } else {
@@ -36,11 +46,6 @@ public class SimpleHashMap<K, V> {
                 buckets[i].forEach(System.out::println);
             }
         }
-    }
-
-    private boolean checkSize() {
-        loadFactor = (float) size / count;
-        return DEFAULT_LOAD_FACTOR < loadFactor;
     }
 
     /**
@@ -71,9 +76,7 @@ public class SimpleHashMap<K, V> {
      * @return - value delete elem
      */
     public V put(K key, V value) {
-        if (!checkSize()) {
-            System.out.println(checkSize());
-            size = size * 2;
+        if (count > threshold) {
             resize();
         }
         V oldValue = null;
@@ -103,13 +106,20 @@ public class SimpleHashMap<K, V> {
     }
 
     private void resize() {
-        System.out.println("new goooooo!!!!!" + size);
+        size *= 2;
         SimpleLinkedList<MapEntry<K, V>>[] oldBuckets = buckets;
         buckets = new SimpleLinkedList[size];
+        count = 0;
         for (SimpleLinkedList<MapEntry<K, V>> bucket : oldBuckets
         ) {
-            bucket.forEach(System.out::println);
+            if (bucket != null) {
+                for (MapEntry<K, V> pair : bucket
+                     ) {
+                    put(pair.getKey(), pair.getValue());
+                }
+            }
         }
+        threshold = (int) (size * DEFAULT_LOAD_FACTOR);
     }
 
     /**
