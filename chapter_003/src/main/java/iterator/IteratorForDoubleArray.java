@@ -20,9 +20,9 @@ public class IteratorForDoubleArray implements Iterator<Integer> {
     }
 
     /**
-     *сначало идем по Y если жошли до конца values[x].length - 1) < y
+     * сначала идем по Y если дошли до конца values[x].length - 1) < y
      * то спускаемся на x++ , а y = 0
-     * @return елемент
+     * @return элемент
      */
     @Override
     public Integer next() {
