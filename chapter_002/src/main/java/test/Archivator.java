@@ -31,19 +31,19 @@ public class Archivator {
     static class Args {
 
         private final Map<String, Consumer<List<String>>> commands = new HashMap<>(Map.of(
-                "-d" , new Consumer<>() {
+                "-d", new Consumer<>() {
                     @Override
                     public void accept(List<String> list) {
                         directory = list.stream().findFirst().orElse("");
                     }
                 },
-                "-e" , new Consumer<>() {
+                "-e", new Consumer<>() {
                     @Override
                     public void accept(List<String> list) {
-                        exclude = list.stream().map(s -> Pattern.compile(s.replace("*." , ".\\.") + "$" , Pattern.CASE_INSENSITIVE)).collect(Collectors.toList());
+                        exclude = list.stream().map(s -> Pattern.compile(s.replace("*.", ".\\.") + "$", Pattern.CASE_INSENSITIVE)).collect(Collectors.toList());
                     }
                 },
-                "-o" , new Consumer<>() {
+                "-o", new Consumer<>() {
                     @Override
                     public void accept(List<String> list) {
                         output = list.stream().findFirst().orElse("");
