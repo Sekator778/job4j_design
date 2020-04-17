@@ -15,8 +15,7 @@ price int
 INSERT INTO type (name) VALUES
 ('сыр'),
 ('алкоголь'),
-('meat')
-;
+('meat');
 
 INSERT INTO product (name, type_id, price) VALUES
     ('сыр', 1, 9.99),
@@ -25,5 +24,4 @@ INSERT INTO product (name, type_id, price) VALUES
  ('мороженное в шоколаде', 1, 19.99),
     ('молоко', 1, 2.99),
    ('gin', 2, 11.99),
-   ('bread', 2, 0.99)
-   ;
+   ('bread', 2, 0.99);
