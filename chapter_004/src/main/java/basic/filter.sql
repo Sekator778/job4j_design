@@ -25,10 +25,9 @@ select count(p.id)
 from product p inner join type t on t.id = p.type_id
 where t.name in ('СЫР', 'алкоголь');
 -- 7. Написать запрос, который выводит тип продуктов, которых осталось меньше 10 штук.
-select t.name, p.name
-from type t inner join product p
-on t.id = p.type_id
-where p.quantity < 10;
+select name from type
+    where (select count(p.id) from product as p
+        where p.type_id = type_id) < 10;
 --8. Вывести все продукты и их тип.
 select p.name, t.name
 from product p inner join type t
