@@ -34,10 +34,6 @@ public class HashCodeEqualsExample {
             System.out.println(map2.hashCode(user));
         }
 
-        System.out.println("index when generate SimpleHashMap");
-        for (int i = 0; i < 10; i++) {
-            System.out.println(map.index(user));
-        }
         System.out.println("index when generate SimpleHashChain");
         for (int i = 0; i < 10; i++) {
             System.out.println(map2.index(map2.hashCode(user)));

@@ -17,12 +17,11 @@ public class SimpleHashMapTest {
     public void whenTest() {
         SimpleHashMap<User, String> map = new SimpleHashMap<>();
         Calendar calendar1 = new GregorianCalendar();
-
         User user1 = new User("Bob", 1, calendar1);
         User user2 = new User("Marvin", 2, calendar1);
-
         map.put(user1, "one");
         map.put(user2, "two");
+
         assertThat(map.get(user1), is("one"));
         assertThat(map.get(user2), is("two"));
     }
@@ -30,15 +29,13 @@ public class SimpleHashMapTest {
     @Test
     public void whenInsertTheSameObjectAndGet() {
         Calendar calendar1 = new GregorianCalendar();
-
         User user1 = new User("Bob", 1, calendar1);
         User user2 = new User("Bob", 1, calendar1);
-
         SimpleHashMap<User, String> map = new SimpleHashMap<>();
+
         assertThat(map.put(user1, "one"), is("one"));
         assertThat(map.put(user2, "two"), is("one"));
         assertThat(map.put(user1, "one"), is("one"));
-
     }
 
     /**
@@ -70,30 +67,25 @@ public class SimpleHashMapTest {
         map.put(user2, "two");
         map.put(user3, "three");
         assertThat(map.size(), is(4));
-        assertThat(map.getCount(), is(3));
         map.put(user4, "four");
         assertThat(map.size(), is(4));
         map.put(user5, "five");
         // посмотреть где кто лежит интересно
 //        System.out.println(map);
-        assertThat(map.getCount(), is(5));
         // а так если через threshold
         assertThat(map.size(), is(8));
         map.put(user6, "six");
         // посмотреть где кто лежит интересно
 //        System.out.println("after resize");
 //        System.out.println(map);
-        assertThat(map.getCount(), is(6));
         assertThat(map.size(), is(8));
         // странным образом настроился тут хешфункция что ресайзает после 7 елемента так будет
         // если неправильно ресайзать через лоадфактор
         map.put(user7, "seven");
-        assertThat(map.getCount(), is(7));
         assertThat(map.size(), is(8));
         map.put(user8, "eight");
         map.put(user9, "nine");
         map.put(user10, "ten");
-        assertThat(map.getCount(), is(10));
         System.out.println(map);
 
         assertThat(map.get(user1), is("one"));
@@ -111,18 +103,6 @@ public class SimpleHashMapTest {
         assertThat(map.remove(user5), is("five"));
         assertThat(map.remove(user7), is("seven"));
 
-    }
-
-    /**
-     * при добавлении null обьект должен попасть в ячейку с
-     * индексом 0
-     */
-    @Test
-    public void testPutNull() {
-        SimpleHashMap<String, String> map = new SimpleHashMap<>();
-        for (int i = 0; i < 23; i++) {
-            assertThat(map.index(null), is(0));
-        }
     }
 
     @Test

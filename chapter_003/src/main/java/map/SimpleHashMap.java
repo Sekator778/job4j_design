@@ -5,24 +5,22 @@ import list.SimpleLinkedList;
 import java.util.*;
 
 /**
- * некоторые методы или переменные добавлены или уровень оступа шире чем надо
- * для того чтобы видеть что внутри происходит
- * как вот метод getCount -- Size
- *
- * @author Sekator  : mail sekator778@gmail.com
+ * реализация что то похожего на хешкарту
+ * на основе нашего что то похожего линкед листа
+ * который внутри в ноде держит мапентри
  */
 
 public class SimpleHashMap<K, V> {
-    static int size = 4;
-    static final float DEFAULT_LOAD_FACTOR = 0.75f;
+    private static int size = 4;
+    private static final float DEFAULT_LOAD_FACTOR = 0.75f;
     private int count;
     private int threshold;
-    SimpleLinkedList<MapEntry<K, V>>[] buckets = new SimpleLinkedList[size];
+    private SimpleLinkedList<MapEntry<K, V>>[] buckets = new SimpleLinkedList[size];
 
-    public int getCount() {
-        return count;
-    }
-
+    /**
+     * конструктор с инициализацией
+     * threshold
+     */
     public SimpleHashMap() {
         this.threshold = (int) (size * DEFAULT_LOAD_FACTOR);
     }
@@ -39,14 +37,11 @@ public class SimpleHashMap<K, V> {
     /**
      * вывод карты на экран
      */
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < size; i++) {
-            if (buckets[i] == null) {
-                continue;
-            } else {
+            if (buckets[i] != null) {
                 sb.append(i);
                 buckets[i].forEach(x -> sb.append(x.toString()).append(" next nod "));
                 sb.append("\n");
@@ -69,14 +64,18 @@ public class SimpleHashMap<K, V> {
         return h;
     }
 
-    public int index(K key) {
+    /**
+     * метод вычисляет номер ячейки (индекс масива)
+     *
+     * @param key кей нашей мапы
+     * @return индекс
+     */
+    private int index(K key) {
         return (buckets.length - 1) & hash(key);
     }
 
     /**
-     * тут надо подкоректировать так как по условию замены нету
-     * можно возвращать булен
-     * вообщем упростить
+     * метод вставляющий данные в мапу
      *
      * @param key   - key
      * @param value - value
@@ -112,6 +111,10 @@ public class SimpleHashMap<K, V> {
         return oldValue;
     }
 
+    /**
+     * расширение количество
+     * ячейек
+     */
     private void resize() {
         size *= 2;
         SimpleLinkedList<MapEntry<K, V>>[] oldBuckets = buckets;
@@ -146,6 +149,12 @@ public class SimpleHashMap<K, V> {
         return null;
     }
 
+    /**
+     * удаление елемента
+     *
+     * @param key кей мапы
+     * @return значение обьекта которого удалили
+     */
     public V remove(K key) {
         V rsl = null;
         if (buckets.length > 0) {
