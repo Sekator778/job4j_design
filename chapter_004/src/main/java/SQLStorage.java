@@ -8,7 +8,7 @@ public class SQLStorage {
 
     public static void main(String[] args) {
         String url = "jdbc:postgresql://localhost:5432/car_storage";
-        String username = "main";
+        String username = "postgres";
         String password = "password";
         Connection conn = null;
         try {
@@ -41,9 +41,23 @@ public class SQLStorage {
 //            st.close();
 
             //delete ===================
-            PreparedStatement st = conn.prepareStatement("delete from car where car_id = ?");
-            st.setInt(1, 7);
+//            PreparedStatement st = conn.prepareStatement("delete from car where car_id = ?");
+//            st.setInt(1, 7);
+//            st.executeUpdate();
+
+            //insert + result =====
+            PreparedStatement st = conn.prepareStatement("insert into car (name, body_car_id, motor_car_id, transmission_car_id) values (?, ?, ?, ?)");
+
+            st.setString(1, "best Java car222");
+            st.setInt(2, 1);
+            st.setInt(3, 1);
+            st.setInt(4, 1);
             st.executeUpdate();
+            ResultSet resultSet = st.getGeneratedKeys();
+            if (resultSet.next()) {
+                System.out.println("any");
+                System.out.println(resultSet.getInt(1));
+            }
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
