@@ -9,11 +9,12 @@ public class ForwardLinked<T> implements Iterable<T> {
 
     public static void main(String[] args) {
         ForwardLinked<Integer> list = new ForwardLinked<>();
-        for (int c = 1; c <= 1; c++) {
+        for (int c = 1; c <= 4; c++) {
             list.add(c);
         }
 
 //        System.out.println(list.toString());
+//        list.reverser();
         list.revert();
         System.out.println(list.toString());
 
@@ -40,7 +41,7 @@ public class ForwardLinked<T> implements Iterable<T> {
      * меньше строк
      */
     void revert() {
-        //есть ли список
+//        есть ли список
         if (head == null) {
             throw new IllegalArgumentException("empty chain");
         }
@@ -59,9 +60,12 @@ public class ForwardLinked<T> implements Iterable<T> {
             current.next = previous;    // ////swap items
             previous = current;       ///
 
-            head = current;              //next item
+            head = current;              //тут голову делаем на текущий а текущий ниже смотрим двигаем вперед
             current = next;             //тут просто вперед двигаем
         }
+    }
+
+    public void reverser() {
     }
 
     @Override
