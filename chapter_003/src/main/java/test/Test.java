@@ -1,7 +1,6 @@
 package test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.TreeSet;
 
 /**
  *
@@ -9,11 +8,15 @@ import java.util.Map;
 
 public class Test {
     public static void main(String[] args) {
-        Map<String, String> map = new HashMap<>();
-        map.put("name", "Joan");
-
-        map.computeIfPresent("name1", (key, value) -> "what" + ", " + "Fuck");
-
-        System.out.println(map.get("name")); //output: name, Joan
+        TreeSet<String> set = new TreeSet();
+        set.add("Java");
+        set.add("The");
+        set.add("Java");
+        set.add("JavaTheBest");
+        for (String t : set
+             ) {
+            System.out.print(t + " ");
+        }
+        System.out.println();
     }
 }

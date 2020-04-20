@@ -9,13 +9,13 @@ public class ForwardLinked<T> implements Iterable<T> {
 
     public static void main(String[] args) {
         ForwardLinked<Integer> list = new ForwardLinked<>();
-        for (int c = 1; c <= 4; c++) {
+        for (int c = 1; c <= 7; c++) {
             list.add(c);
         }
 
-//        System.out.println(list.toString());
-//        list.reverser();
-        list.revert();
+        System.out.println(list.toString());
+        list.reverser();
+//        list.revert();
         System.out.println(list.toString());
 
 
@@ -65,7 +65,8 @@ public class ForwardLinked<T> implements Iterable<T> {
         }
     }
 
-    public void reverser() {
+    public void reverser() { //1234
+
     }
 
     @Override
