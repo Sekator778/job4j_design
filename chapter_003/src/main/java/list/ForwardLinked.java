@@ -65,7 +65,8 @@ public class ForwardLinked<T> implements Iterable<T> {
         }
     }
 
-    public void reverser() { //1234
+    public void reverser() { //12345678
+
 
     }
 

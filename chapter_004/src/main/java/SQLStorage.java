@@ -41,19 +41,16 @@ public class SQLStorage {
 //            st.close();
 
             //delete ===================
-//            PreparedStatement st = conn.prepareStatement("delete from car where car_id = ?");
-//            st.setInt(1, 7);
-//            st.executeUpdate();
 
-            //insert + result =====
-            PreparedStatement st = conn.prepareStatement("insert into car (name, body_car_id, motor_car_id, transmission_car_id) values (?, ?, ?, ?)");
+            PreparedStatement preparedStatement = conn.prepareStatement("insert into car (name, body_car_id, motor_car_id, transmission_car_id) values (?, ?, ?, ?)",
+                    Statement.RETURN_GENERATED_KEYS);
 
-            st.setString(1, "best Java car222");
-            st.setInt(2, 1);
-            st.setInt(3, 1);
-            st.setInt(4, 1);
-            st.executeUpdate();
-            ResultSet resultSet = st.getGeneratedKeys();
+            preparedStatement.setString(1, "best Java car2225");
+            preparedStatement.setInt(2, 1);
+            preparedStatement.setInt(3, 1);
+            preparedStatement.setInt(4, 1);
+            preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
                 System.out.println("any");
                 System.out.println(resultSet.getInt(1));

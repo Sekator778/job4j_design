@@ -67,6 +67,42 @@ SELECT distinct a.model as model_1, b.model as model_2
 from pc as a, pc as b
 where a.price = b.price;
 
++ Получение итоговых значений
+
+название	описание
+COUNT(*)	Возвращает количество строк источника записей
+COUNT   	Возвращает количество значений в указанном столбце
+SUM     	Возвращает сумму значений в указанном столбце
+AVG     	Возвращает среднее значение в указанном столбце
+MIN     	Возвращает минимальное значение в указанном столбце
+MAX     	Возвращает максимальное значение в указанном столбце
+
+Найти минимальную и максимальную цену на персональные компьютеры:
+SELECT MIN(price) AS Min_price,
+    MAX(price) AS Max_price
+FROM PC;
+
+Найти имеющееся в наличии количество компьютеров, выпущенных производителем А
+select count(*) as QTY
+from pc
+where model in(select model
+from product
+where maker = 'A');
+
++ Предложение GROUP BY используется для определения групп выходных строк, к которым могут применяться агрегатные функции
+(COUNT, MIN, MAX, AVG и SUM)
+
+++ подзапросы
+Вывести номер модели и цену принтера, а также максимальную и минимальную цену на принтеры того же типа.
+SELECT model, price, type,
+(SELECT MIN(price) FROM Printer P1 WHERE P1.type = P.type) min_price,
+(SELECT MAX(price) FROM Printer P1 WHERE P1.type = P.type) max_price
+FROM printer P;
+
+
+
+
+
 
 
 
