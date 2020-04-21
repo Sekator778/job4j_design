@@ -16,4 +16,9 @@ public class Ticket3D implements Ticket {
     public void remove() {
 
     }
+
+    @Override
+    public void promotions() {
+
+    }
 }
