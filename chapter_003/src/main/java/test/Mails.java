@@ -5,7 +5,7 @@ import java.util.*;
 /**
  *
  */
-public class Mail {
+public class Mails {
     public static void main(String[] args) {
         Set<String> user1Set = new LinkedHashSet<>();
         user1Set.add("xxx@ya.ru");
@@ -40,38 +40,24 @@ public class Mail {
                 user4,
                 user5
         ));
-//        Map<String, User> output = convert(userList);
-//        output.forEach((k, v) -> System.out.println("-> " + k + " : " + v.getName()));
 
         Map<User, Set<String>> output = convert(userList);
         output.forEach((k, v) -> System.out.println("-> " + k.getName() + " : " + v.toString()));
     }
 
     public static Map<User, Set<String>> convert(List<User> input) {
-        // первая тут будут уники мейлы и пользователь который последний добавил его
         Map<String, User> one = new HashMap<>();
         Map<User, Set<String>> two = new HashMap<>();
-
-        // тут будут уники юзеры и мейлы из первой карты где он засветился с таким мейлом
-        // выгружаем всех юзеров попорядку
         for (User user : input
         ) {
             User temp = user;
-            // выгружаем каждого юзера почту по одной
             for (String email : user.getMails()
             ) {
-                //если такой еще нет то добавляем
-//                System.out.println("сейчас добавляем почту " + email + "от юзера " + temp.getName());
                 one.putIfAbsent(email, temp);
-                System.out.println("this user " + temp.getName() + " present " + one.containsValue(temp));
-                //если дошли сюда и пользователя нет значит он этот пользователь имеет схожий адрес с каким то ранее добавленным
                 if (!one.containsValue(temp)) {
-//                    System.out.println("this email contains " + email);
-//                    System.out.println("temp before " + temp.getName());
                     one.get(email).getMails().addAll(temp.getMails());
                     two.put(one.get(email), one.get(email).getMails());
                     temp = one.get(email);
-//                    System.out.println("after before " + temp.getName());
                 }
             }
         }
@@ -81,7 +67,6 @@ public class Mail {
     private static class User {
         String name;
         Set<String> mails;
-        boolean isProcessed = false;
 
         public User(String name, Set<String> mails) {
             this.name = name;

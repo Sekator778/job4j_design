@@ -57,6 +57,7 @@ public class Post2 {
                 }
             }
         }
+
         Map<User, Set<String>> result = new HashMap<>();
 
         for (Map.Entry<String, User> entry : one.entrySet()) {

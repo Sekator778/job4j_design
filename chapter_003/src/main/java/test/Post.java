@@ -66,4 +66,27 @@
 //        result.addAll(two);
 //        return result;
 //    }
+//    private static class User {
+//        String name;
+//        Set<String> mails;
+//        boolean isProcessed = false;
+//
+//        public User(String name, Set<String> mails) {
+//            this.name = name;
+//            this.mails = mails;
+//        }
+//
+//        public String getName() {
+//            return name;
+//        }
+//
+//        public Set<String> getMails() {
+//            return mails;
+//        }
+//
+//        @Override
+//        public String toString() {
+//            return "name='" + name + '\'' + ", mails=" + mails;
+//        }
+//    }
 //}
