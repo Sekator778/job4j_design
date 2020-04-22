@@ -3,7 +3,6 @@ package test.example;
 import test.User;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Post2 {
     public static void main(String[] args) {
@@ -58,7 +57,16 @@ public class Post2 {
                 }
             }
         }
-        return one.entrySet().stream().collect(Collectors.groupingBy(
-                Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toSet())));
+        Map<User, Set<String>> result = new HashMap<>();
+
+        for (Map.Entry<String, User> entry : one.entrySet()) {
+            Set<String> list = new HashSet<>();
+            if (result.containsKey(entry.getValue())) {
+                list = result.get(entry.getValue());
+            }
+            list.add(entry.getKey());
+            result.put(entry.getValue(), list);
+        }
+        return result;
     }
 }
