@@ -1,6 +1,6 @@
 package test;
 
-import java.util.HashSet;
+import java.util.List;
 
 /**
  *
@@ -8,10 +8,10 @@ import java.util.HashSet;
 
 public class User {
     String name;
-    HashSet<String> mails;
+    List<String> mails;
     boolean isProcessed = false;
 
-    public User(String name, HashSet<String> mails) {
+    public User(String name, List<String> mails) {
         this.name = name;
         this.mails = mails;
     }
@@ -20,7 +20,12 @@ public class User {
         return name;
     }
 
-    public HashSet<String> getMails() {
+    public List<String> getMails() {
         return mails;
+    }
+
+    @Override
+    public String toString() {
+        return "name='" + name + '\'' + ", mails=" + mails;
     }
 }
