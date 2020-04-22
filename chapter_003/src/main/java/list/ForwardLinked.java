@@ -7,20 +7,6 @@ import java.util.StringJoiner;
 public class ForwardLinked<T> implements Iterable<T> {
     private Node<T> head;
 
-    public static void main(String[] args) {
-        ForwardLinked<Integer> list = new ForwardLinked<>();
-        for (int c = 1; c <= 7; c++) {
-            list.add(c);
-        }
-
-        System.out.println(list.toString());
-        list.reverser();
-//        list.revert();
-        System.out.println(list.toString());
-
-
-    }
-
     public void add(T value) {
         Node<T> node = new Node<T>(value, null);
         if (head == null) {
@@ -40,7 +26,7 @@ public class ForwardLinked<T> implements Iterable<T> {
      * можно оптимизировать
      * меньше строк
      */
-    void revert() {
+    void reverse() {
 //        есть ли список
         if (head == null) {
             throw new IllegalArgumentException("empty chain");
@@ -63,11 +49,6 @@ public class ForwardLinked<T> implements Iterable<T> {
             head = current;              //тут голову делаем на текущий а текущий ниже смотрим двигаем вперед
             current = next;             //тут просто вперед двигаем
         }
-    }
-
-    public void reverser() { //12345678
-
-
     }
 
     @Override
