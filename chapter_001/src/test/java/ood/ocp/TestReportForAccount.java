@@ -1,8 +1,5 @@
-package srp;
+package ood.ocp;
 
-import ood.srp.Employer;
-import ood.srp.MemStore;
-import ood.srp.ReportAccounter;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -21,7 +18,7 @@ public class TestReportForAccount {
         store.add(worker1);
         store.add(worker2);
         store.add(worker3);
-        ReportAccounter engine = new ReportAccounter(store);
+        ReportImp engine = new ReportAccounter(store);
         StringBuilder expect = new StringBuilder()
                 .append("Name; Salary;")
                 .append(System.lineSeparator())

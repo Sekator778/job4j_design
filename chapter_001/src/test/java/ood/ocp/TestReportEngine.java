@@ -1,12 +1,11 @@
-package srp;
+package ood.ocp;
 
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.is;
-
-import ood.srp.*;
 import org.junit.Test;
 
 import java.util.Calendar;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 public class TestReportEngine {
     MemStore store = new MemStore();
@@ -16,7 +15,7 @@ public class TestReportEngine {
         Calendar now = Calendar.getInstance();
         Employer worker = new Employer("Ivan", now, now, 100);
         store.add(worker);
-        ReportEngine engine = new ReportEngine(store);
+        ReportImp engine = new ReportSimple(store);
         StringBuilder expect = new StringBuilder()
                 .append("Name; Hired; Fired; Salary;")
                 .append(System.lineSeparator())
@@ -38,7 +37,7 @@ public class TestReportEngine {
         store.add(worker1);
         store.add(worker2);
         store.add(worker3);
-        ReportSalary engine = new ReportSalary(store);
+        ReportImp engine = new ReportSalary(store);
         StringBuilder expect = new StringBuilder()
                 .append("Name; Salary;")
                 .append(System.lineSeparator())
@@ -64,7 +63,7 @@ public class TestReportEngine {
         store.add(worker1);
         store.add(worker2);
         store.add(worker3);
-        ReportAccounter engine = new ReportAccounter(store);
+        ReportImp engine = new ReportAccounter(store);
         StringBuilder expect = new StringBuilder()
                 .append("Name; Salary;")
                 .append(System.lineSeparator())

@@ -25,5 +25,17 @@ public class Test {
         set1.add("av");
         set1.add("as");
         System.out.println(set1);
+        System.out.println("====================");
+        System.out.println(f());
+
+    }
+
+
+    public static int f() {
+        try {
+            return 1;
+        } finally {
+            return 2;
+        }
     }
 }

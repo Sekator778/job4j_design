@@ -18,6 +18,12 @@ public class Test {
             mass[size - 1 - i] = temp;
         }
         System.out.println(Arrays.toString(mass));
+        T t = new T();
+        System.out.println("========T========");
+        System.out.println(t.i);
 
     }
+}
+class T {
+    int i;
 }

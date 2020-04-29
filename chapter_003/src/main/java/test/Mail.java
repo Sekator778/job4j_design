@@ -42,9 +42,12 @@ public class Mail {
         ));
 //        Map<String, User> output = convert(userList);
 //        output.forEach((k, v) -> System.out.println("-> " + k + " : " + v.getName()));
-
-        Map<User, Set<String>> output = convert(userList);
-        output.forEach((k, v) -> System.out.println("-> " + k.getName() + " : " + v.toString()));
+//        System.out.println("user1 mails " + user1.getMails());
+//        System.out.println("user3 mails " + user3.getMails());
+//
+//        Map<User, Set<String>> output = convert(userList);
+//        output.forEach((k, v) -> System.out.println("-> " + k.getName() + " : " + v.toString()));
+        somePublicMethod(userList);
     }
 
     public static Map<User, Set<String>> convert(List<User> input) {
@@ -60,20 +63,23 @@ public class Mail {
             // выгружаем каждого юзера почту по одной
             for (String email : user.getMails()
             ) {
-                //если такой еще нет то добавляем
-//                System.out.println("сейчас добавляем почту " + email + "от юзера " + temp.getName());
-                one.putIfAbsent(email, temp);
-                System.out.println("this user " + temp.getName() + " present " + one.containsValue(temp));
-                //если дошли сюда и пользователя нет значит он этот пользователь имеет схожий адрес с каким то ранее добавленным
-                if (!one.containsValue(temp)) {
-//                    System.out.println("this email contains " + email);
-//                    System.out.println("temp before " + temp.getName());
+                // если почты нет еще в
+                if (!one.containsKey(email)) {
+                    // то добавляем почту и юзера
+                    one.put(email, temp);
+                } else {
+                    // но если есть то всю почту этого юзера кидаем тому кто ее уже принеc
                     one.get(email).getMails().addAll(temp.getMails());
-                    two.put(one.get(email), one.get(email).getMails());
-                    temp = one.get(email);
-//                    System.out.println("after before " + temp.getName());
+                    for (String mail2 : one.get(email).getMails()) {
+                        one.putIfAbsent(mail2, one.get(email));
+                    }
+                    break;
                 }
+                    two.put(one.get(email), one.get(email).getMails());
+//                    temp = one.get(email);
             }
+//            two.put(temp, temp.getMails());
+
         }
         return two;
     }
@@ -100,5 +106,18 @@ public class Mail {
         public String toString() {
             return "name='" + name + '\'' + ", mails=" + mails;
         }
+    }
+
+    public  static void somePublicMethod(List<User> userList) {
+        long startTime = 0;
+        long endTime = 0;
+        startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 100_000_000; i++) {
+            convert(userList);
+        }
+        endTime = System.currentTimeMillis();
+
+        System.out.println("Total execution time: " + (endTime - startTime) + "ms");
     }
 }

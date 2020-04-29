@@ -50,6 +50,20 @@ public class ForwardLinked<T> implements Iterable<T> {
             current = next;             //тут просто вперед двигаем
         }
     }
+    public void reversed() {
+        Node<T> current = head;
+        Node<T> next = null;
+        Node<T> previous = null;
+
+        while (current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+
+            head = current;
+            current = next;
+        }
+    }
 
     @Override
     public Iterator<T> iterator() {
@@ -97,5 +111,19 @@ public class ForwardLinked<T> implements Iterable<T> {
         }
         joiner.add(tmp.value.toString());
         return joiner.toString();
+    }
+
+    public static void main(String[] args) {
+        ForwardLinked<Integer> linked = new ForwardLinked<>();
+        linked.add(1);
+        linked.add(2);
+        linked.add(3);
+        linked.add(4);
+        linked.add(5);
+        System.out.println(linked);
+        linked.reversed();
+        System.out.println(linked);
+
+
     }
 }

@@ -1,9 +1,5 @@
-package srp;
+package ood.ocp;
 
-import ood.srp.Employer;
-import ood.srp.MemStore;
-import ood.srp.ReportAccounter;
-import ood.srp.ReportAccouterXML;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -23,7 +19,7 @@ public class TestReportAccounterXML {
         store.add(worker1);
         store.add(worker2);
         store.add(worker3);
-        ReportAccounter engine = new ReportAccouterXML(store);
+        ReportImp engine = new ReportAccouterXML(store);
         StringBuilder expect = new StringBuilder()
                 .append("Name; Salary;")
                 .append(System.lineSeparator())

@@ -1,10 +1,12 @@
-package ood.srp;
+package ood.ocp;
+
+import ood.srp.NameComparator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class ReportSalary {
+public class ReportSalary implements ReportImp {
     private Store store;
 
     public ReportSalary(Store store) {

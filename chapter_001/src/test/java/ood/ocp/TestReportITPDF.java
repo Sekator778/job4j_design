@@ -1,8 +1,5 @@
-package srp;
+package ood.ocp;
 
-import ood.srp.Employer;
-import ood.srp.MemStore;
-import ood.srp.ReportIT;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -10,16 +7,17 @@ import java.util.Calendar;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class TestReportIT {
+public class TestReportITPDF {
     MemStore store = new MemStore();
+
     @Test
-    public void whenGeneratedForIT() {
+    public void whenGeneratedForITtoPDF() {
         Calendar now = Calendar.getInstance();
         Employer worker1 = new Employer("Ivan", now, now, 100);
         Employer worker2 = new Employer("Smith", now, now, 500);
         store.add(worker1);
         store.add(worker2);
-        ReportIT engine = new ReportIT(store);
+        ReportImp engine = new ReportITPDF(store);
         StringBuilder expect = new StringBuilder();
         expect.append("<table> <tr> <td>")
                 .append("Name; Hired; Fired; Salary;")
@@ -39,7 +37,8 @@ public class TestReportIT {
                 .append(worker2.getSalary()).append(";")
                 .append("</tr>")
                 .append("</td> <tr> </table>")
-                .append(System.lineSeparator());
+                .append(System.lineSeparator())
+                .append("Compile file to PDF");
         assertThat(engine.generate(employer -> employer.getSalary() >= 0), is(expect.toString()));
     }
 }

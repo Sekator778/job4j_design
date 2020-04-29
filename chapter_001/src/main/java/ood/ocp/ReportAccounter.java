@@ -1,8 +1,8 @@
-package ood.srp;
+package ood.ocp;
 
 import java.util.function.Predicate;
 
-public class ReportAccounter {
+public class ReportAccounter implements ReportImp {
     private Store store;
     private final double dollar = 26.0;
 

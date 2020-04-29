@@ -1,5 +1,7 @@
 package ood.srp;
 
+import ood.ocp.Employer;
+
 import java.util.Comparator;
 
 public class NameComparator implements Comparator<Employer> {

@@ -39,9 +39,10 @@ public class Post2 {
                 user4,
                 user5
         ));
-
-        Map<User, Set<String>> output = convert(userList);
-        output.forEach((k, v) -> System.out.println("-> " + k.getName() + " : " + v.toString()));
+//
+//        Map<User, Set<String>> output = convert(userList);
+//        output.forEach((k, v) -> System.out.println("-> " + k.getName() + " : " + v.toString()));
+        somePublicMethod(userList);
     }
 
     public static Map<User, Set<String>> convert(List<User> input) {
@@ -57,9 +58,7 @@ public class Post2 {
                 }
             }
         }
-
         Map<User, Set<String>> result = new HashMap<>();
-
         for (Map.Entry<String, User> entry : one.entrySet()) {
             Set<String> list = new HashSet<>();
             if (result.containsKey(entry.getValue())) {
@@ -68,6 +67,21 @@ public class Post2 {
             list.add(entry.getKey());
             result.put(entry.getValue(), list);
         }
+//        return one.entrySet().stream().collect(Collectors.groupingBy(
+//                Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toSet())));
         return result;
+    }
+
+    public static void somePublicMethod(List<User> userList) {
+        long startTime = 0;
+        long endTime = 0;
+        startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 100_000_000; i++) {
+            convert(userList);
+        }
+        endTime = System.currentTimeMillis();
+
+        System.out.println("Total execution time: " + (endTime - startTime) + "ms");
     }
 }
