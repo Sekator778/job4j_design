@@ -75,9 +75,4 @@ public class CinemaTest {
         Ticket ticket = new Ticket3D();
         ticket.promotions();
     }
-
-
-
-
-
 }
