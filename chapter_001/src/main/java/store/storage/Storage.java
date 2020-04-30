@@ -31,10 +31,6 @@ public class Storage {
         return foods;
     }
 
-    public boolean checkStore(Food food) {
-        return !foods.contains(food);
-    }
-
     public List<Food> takeAll() {
         List<Food> taken =  foods;
         foods.clear();

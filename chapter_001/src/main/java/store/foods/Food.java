@@ -2,7 +2,6 @@ package store.foods;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Objects;
 
 /**
  * общий фрукт)
@@ -49,14 +48,15 @@ public abstract class Food {
     }
 
     /**
-     * главный метод от которого зависист судьба все го проекта
+     * главный метод от которого зависит судьба все го проекта
      *
-     * @return - округленный процент скоко осталось годности
+     * @return - округленный процент сколько осталось годности
      */
     public double calculateLife() {
         int storageLife = Period.between(getCreateDate(), getExpireDate()).getDays();
         int remainingLife = Period.between(LocalDate.now(), getExpireDate()).getDays();
-        return Math.round((1.0 * (storageLife - remainingLife) / storageLife) * 100.0);
+        System.out.println("calc life " + (100.0 - (Math.round((1.0 * (storageLife - remainingLife) / storageLife) * 100.0))));
+        return (100.0 - Math.round((1.0 * (storageLife - remainingLife) / storageLife) * 100.0));
     }
 
     @Override

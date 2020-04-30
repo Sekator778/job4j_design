@@ -21,4 +21,11 @@ public interface StorageStrategy {
      * @return - add or no add
      */
     boolean add(Food food, List<Food> foods);
+
+    /**
+     * чек по условиям
+     * @param food еда
+     * @return подходит да
+     */
+    boolean check(Food food);
 }

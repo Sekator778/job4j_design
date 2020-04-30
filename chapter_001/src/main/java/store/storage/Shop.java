@@ -15,12 +15,24 @@ public class Shop implements StorageStrategy {
     @Override
     public boolean add(Food food, List<Food> foods) {
         boolean moveFood = false;
-        if (food.calculateLife() >= 25.0 && food.calculateLife() <= 75.0) {
-            moveFood = foods.add(food);
-        } else if (food.calculateLife() > 75.0 && food.calculateLife() < 100.0) {
-            food.setDiscount(5);
-            moveFood = foods.add(food);
-        }
+       if (check(food)) {
+           moveFood = foods.add(food);
+           System.out.println("Shop add");
+
+       }
         return moveFood;
+    }
+
+    @Override
+    public boolean check(Food food) {
+        boolean rsl = false;
+        if (food.calculateLife() >= 25.0 && food.calculateLife() <= 75.0) {
+            rsl = true;
+        } else if (food.calculateLife() > 75.0 && food.calculateLife() < 100.0) {
+//            System.out.println("discount");
+            food.setDiscount(5);
+            rsl = true;
+        }
+        return rsl;
     }
 }
