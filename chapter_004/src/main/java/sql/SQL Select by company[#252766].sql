@@ -35,6 +35,11 @@ select * from person;
 --// 1) Получить в одном запросе:
 -- // - имена всех лиц, которые НЕ находятся в компании с id = 5
 -- // - название компании для каждого человека
+-- do it..........
+
+
+
+
 select distinct person.name, c.name from person left join company c on person.company_id = c.id
 where c.id = 5
 order by person.name;
@@ -42,6 +47,13 @@ select distinct person.name, c.name from person left join company c on person.co
 where c.id <> 5
 order by person.name;
 -- // 2) Выберите название компании с максимальным количеством людей + количество людей в этой компании
+-- do it .......
+
+
+
+
+
+
 select c.name, count(p.company_id) from company c left join person p on c.id = p.company_id
 group by c.name
 order by count(p.company_id) desc

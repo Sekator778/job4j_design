@@ -30,32 +30,33 @@ public class SQLStorage {
 //            st.executeUpdate();
 
             //select==========
-//            PreparedStatement st = conn.prepareStatement("SELECT * FROM car as c where c.car_id in (?, ?)");
-//                st.setInt(1, 4);
-//                st.setInt(2, 3);
-//            ResultSet rs = st.executeQuery();
-//            while (rs.next()) {
-//                System.out.printf("%s %s" + "\n", rs.getString("name"), rs.getString("body_car_id"));
-//            }
-//            rs.close();
-//            st.close();
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM car as c where c.car_id in (?, ?)");
+                st.setInt(1, 4);
+                st.setInt(2, 3);
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                System.out.printf("%s %s" + "\n", rs.getString("name"), rs.getString("body_car_id"));
+            }
+            rs.close();
+            st.close();
 
             //delete ===================
 
-            PreparedStatement preparedStatement = conn.prepareStatement("insert into car (name, body_car_id, motor_car_id, transmission_car_id) values (?, ?, ?, ?)",
-                    Statement.RETURN_GENERATED_KEYS);
-
-            preparedStatement.setString(1, "best Java car2225");
-            preparedStatement.setInt(2, 1);
-            preparedStatement.setInt(3, 1);
-            preparedStatement.setInt(4, 1);
-            preparedStatement.executeUpdate();
-            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            if (resultSet.next()) {
-                System.out.println("any");
-                System.out.println(resultSet.getInt(1));
-            }
-
+//            PreparedStatement preparedStatement = conn.prepareStatement("insert into car (name, body_car_id, motor_car_id, transmission_car_id) values (?, ?, ?, ?)",
+//                    Statement.RETURN_GENERATED_KEYS);
+//
+//            preparedStatement.setString(1, "best Java car22256");
+//            preparedStatement.setInt(2, 1);
+//            preparedStatement.setInt(3, 1);
+//            preparedStatement.setInt(4, 1);
+//            preparedStatement.executeUpdate();
+//            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+//            if (resultSet.next()) {
+//                System.out.println("any");
+//                System.out.println(resultSet.getInt(1));
+//            }
+//
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
         } finally {

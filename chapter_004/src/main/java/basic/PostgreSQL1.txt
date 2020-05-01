@@ -11,4 +11,10 @@ create database test_db with owner main;
 -- добавим все права на использование базы test_db учетной записи main
 grant all privileges on all tables in schema public to "main";
 //-------------------------------------
-
+//-- command linux terminal PostgreSQL
+-- insert with default
+alter table table_name add column col_name varchar(90) not null default 'go-go-learn SQL';
+-- view info about table
+\d name_table;
+-- update
+ update name_table set row = 'fefef' where id = 3;
