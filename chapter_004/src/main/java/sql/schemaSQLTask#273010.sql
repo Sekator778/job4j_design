@@ -12,6 +12,7 @@ select * from toy;
 truncate table girl restart identity;
 --1. Написать sql инструкцию. Инструкция должна добавить колонку toy_id в таблицу girl.
 alter table  girl add toy_id int;
+
 ALTER TABLE girl ADD FOREIGN KEY (toy_id)
     REFERENCES toy;
 
