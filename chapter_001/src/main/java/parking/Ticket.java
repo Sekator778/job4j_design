@@ -1,24 +1,28 @@
 package parking;
 
+/**
+ * билет в нем айди авто и место для этого авто на стоянке
+ */
 public class Ticket {
     private final int autoID;
-    private final int parkingSite;
+    private final int parkingPlace;
 
-    public Ticket(int autoID, int parkingSite) {
+    public Ticket(int autoID, int parkingPlace) {
         this.autoID = autoID;
-        this.parkingSite = parkingSite;
+        this.parkingPlace = parkingPlace;
     }
 
     public int getAutoID() {
         return autoID;
     }
 
-    public int getParkingSite() {
-        return parkingSite;
+    public int getParkingPlace() {
+        return parkingPlace;
     }
 
     @Override
     public String toString() {
-        return "Ticket {" + "for autoID = " + autoID + ", reserve to parkingSite = " + parkingSite + '}';
+        return "Ticket {" + "for autoID = " + autoID + ", reserve to parkingSite = " + parkingPlace + '}';
     }
+
 }

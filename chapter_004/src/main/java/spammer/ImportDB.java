@@ -23,13 +23,11 @@ public class ImportDB {
 
         List<User> users = new ArrayList<>();
         try (BufferedReader rd = new BufferedReader(new FileReader(dump))) {
-//            rd.lines().forEach(s -> s.split(";"));
             while (rd.ready()) {
                 String[] line;
                 line = rd.readLine().split(";");
                 users.add(new User(line[0], line[1]));
             }
-            /* rd.lines().forEach(...); */
         }
         return users;
     }
@@ -64,10 +62,10 @@ public class ImportDB {
 
     public static void main(String[] args) throws Exception {
         Properties cfg = new Properties();
-        try (FileInputStream in = new FileInputStream("/home/sekator/projects/job4j_design/chapter_004/src/main/resources/appSpammer.properties")) {
+        try (FileInputStream in = new FileInputStream("chapter_004/src/main/resources/appSpammer.properties")) {
             cfg.load(in);
         }
-        ImportDB db = new ImportDB(cfg, "/home/sekator/projects/job4j_design/chapter_004/src/main/resources/dump.txt");
+        ImportDB db = new ImportDB(cfg, "chapter_004/src/main/resources/dump.txt");
         db.save(db.load());
     }
 }

@@ -1,10 +1,10 @@
 package parking;
 
-public class Track implements Auto {
+public class Truck implements Auto {
     private final int id;
-    private static final int SIZE = 8;
+    private static final int SIZE = 4;
 
-    public Track(int id) {
+    public Truck(int id) {
         this.id = id;
     }
 

@@ -1,24 +1,32 @@
 package parking;
 
-import java.util.List;
-
 /**
- * 2й интерфейс ищет место для абстрактоного авто
- * тоесть с помощью реализации мы можем подставлять
+ * 2й интерфейс ищет место для абстрактного авто
+ * то есть с помощью реализации мы можем подставлять
  * разные типы авто
+ * пару вспомогательных методов
  *
  */
 public interface SpaceFinder {
-    /**
-     * делаем парковку
-     * @param places лист мест
-     */
-    void setPlace(List<Place> places);
 
     /**
      * метод главный ищет место для авто
+     *
      * @param auto - любое авто
      */
-    Parking findSpaceForAuto(Auto auto);
+    Place findPlaceForAuto(Auto auto);
+
+    /**
+     * ищем место по билету
+     * @param ticket билет где стоит авто
+     * @return место где стоит авто
+     */
+    Place findPlaceForTicket(Ticket ticket);
+
+    boolean checkFreePlace();
+
+    void clearPlace(Ticket ticket);
+
+
 
 }

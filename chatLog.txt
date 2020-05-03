@@ -1,0 +1,9 @@
+Start chat 
+ stop - for stop chat;
+ go - for continuation chat
+Q:sd
+A:Мало всегда рассчитывать на свои силы, надо еще рассчитывать на свои мозги.
+Q:stop
+Q:sd
+Q:go
+A:Как жизнь?

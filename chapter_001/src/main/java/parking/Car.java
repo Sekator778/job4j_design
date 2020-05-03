@@ -2,7 +2,7 @@ package parking;
 
 public class Car implements Auto {
     private final int id;
-    private static final int SIZE = 2;
+    private static final int SIZE = 1;
 
     public Car(int id) {
         this.id = id;
