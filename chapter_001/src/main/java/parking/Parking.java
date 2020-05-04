@@ -20,6 +20,10 @@ public class Parking {
         this.placeList = initParking(numCarPlace, numTrackPlace);
     }
 
+    public Parking(int numCarPlace) {
+        this.placeList = initParking(numCarPlace, 0);
+    }
+
     /**
      * метод инит !!!!!!!!!!!!!!!!!!!
      * тут надо зависимость от Place а то вроде и есть но на диаграмме нет

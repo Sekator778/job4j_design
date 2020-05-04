@@ -19,4 +19,10 @@ public class ParkingTest {
         assertThat(parking.returnSizeParking(), is((123 * 1 + 23 * 4)));
         new Place().resetNumberPlace();
     }
+
+    @Test
+    public void whenReturnSizeParkingOnlyCar() {
+        Parking carParking = new Parking(2);
+        assertThat(carParking.returnSizeParking(), is(2));
+    }
 }
