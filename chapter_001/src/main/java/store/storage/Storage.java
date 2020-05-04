@@ -31,8 +31,15 @@ public class Storage {
         return foods;
     }
 
+    /**
+     * !!! просто List<Food> taken = foods;  будет ссылка
+     * надо создавать через new ArrayList<>(); !!!!!!
+     * дай все продукты
+     * и наш список продуктов очисть
+     * @return вернет лист продуктов
+     */
     public List<Food> takeAll() {
-        List<Food> taken =  foods;
+        List<Food> taken = new ArrayList<>(foods);
         foods.clear();
         return taken;
      }

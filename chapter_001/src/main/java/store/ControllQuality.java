@@ -35,22 +35,22 @@ public class ControllQuality {
         return rsl;
     }
 
+    /**
+     * извлекать все продукты и перераспределять их заново
+     * 1. все сториджи скидывают все свои продукты в один общий лист redistributedFood
+     * 2. всем продуктам дисконт в 0.0
+     * 3. все продукты добавить в хранилища
+     */
     public void resort() {
         List<Food> redistributedFood = new ArrayList<>();
         for (Storage store : storages) {
             redistributedFood.addAll(store.takeAll());
         }
         redistributedFood.forEach(food -> food.setDiscount(0.0));
+
         for (Food food : redistributedFood
         ) {
-            addToStorage(food);
+            this.addToStorage(food);
         }
-    }
-
-    public boolean sort(List<Food> list) {
-        list.forEach(
-                this::addToStorage
-        );
-        return true;
     }
 }

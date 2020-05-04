@@ -55,7 +55,6 @@ public abstract class Food {
     public double calculateLife() {
         int storageLife = Period.between(getCreateDate(), getExpireDate()).getDays();
         int remainingLife = Period.between(LocalDate.now(), getExpireDate()).getDays();
-        System.out.println("calc life " + (100.0 - (Math.round((1.0 * (storageLife - remainingLife) / storageLife) * 100.0))));
         return (100.0 - Math.round((1.0 * (storageLife - remainingLife) / storageLife) * 100.0));
     }
 
