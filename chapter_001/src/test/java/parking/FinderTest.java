@@ -23,7 +23,7 @@ public class FinderTest {
         Parking parking = new Parking(1, 0);
         Finder finder = new Finder(parking);
         Auto car1 = new Car(232);
-        assertThat(finder.findPlaceForAuto(car1).getNumberPlace(), is(1));
+        assertThat(finder.findPlaceForAuto(car1)[0].getNumberPlace(), is(1));
         new Place().resetNumberPlace();
     }
 
@@ -33,7 +33,21 @@ public class FinderTest {
         Finder finder = new Finder(parking);
         Auto car1 = new Car(232);
         Auto car2 = new Car(23);
-        assertThat(finder.findPlaceForAuto(car1).getNumberPlace(), is(1));
+        assertThat(finder.findPlaceForAuto(car1)[0].getNumberPlace(), is(1));
+        new Place().resetNumberPlace();
+    }
+
+    @Test
+    public void testParkingTruckOn4PlaceCar() {
+        Parking parking = new Parking(4, 0);
+        Finder finder = new Finder(parking);
+        Auto truck = new Truck(232);
+        int i = 1;
+        Unit[] numberPlaces = finder.findPlaceForAuto(truck);
+        for (Unit place : numberPlaces
+        ) {
+            assertThat(place.getNumberPlace(), is(i++));
+        }
         new Place().resetNumberPlace();
     }
 }

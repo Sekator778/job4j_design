@@ -14,14 +14,14 @@ public interface SpaceFinder {
      *
      * @param auto - любое авто
      */
-    Place findPlaceForAuto(Auto auto);
+    Unit[] findPlaceForAuto(Auto auto);
 
     /**
      * ищем место по билету
      * @param ticket билет где стоит авто
      * @return место где стоит авто
      */
-    Place findPlaceForTicket(Ticket ticket);
+    Unit[] findPlaceForTicket(Ticket ticket);
 
     boolean checkFreePlace();
 

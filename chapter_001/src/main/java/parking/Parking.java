@@ -7,12 +7,13 @@ import java.util.List;
  * парковка то есть место разделенное на паркоместа Place
  */
 public class Parking {
-    private final List<Place> placeList;
+    private final List<Unit> placeList;
 
     /**
      * важный момент при создании паркинга она инит делает парковке
      * с размером указанным при начале
-     * @param numCarPlace сколько легковых
+     *
+     * @param numCarPlace   сколько легковых
      * @param numTrackPlace сколько грузовиков
      */
     public Parking(int numCarPlace, int numTrackPlace) {
@@ -25,8 +26,8 @@ public class Parking {
      *
      * @return парковку разбитую на количество указанных мест фор кар и траков
      */
-    private List<Place> initParking(int numCarPlace, int numTrackPlace) {
-        List<Place> places = new ArrayList<>();
+    private List<Unit> initParking(int numCarPlace, int numTrackPlace) {
+        List<Unit> places = new ArrayList<>();
 
         for (int i = 0; i < numCarPlace; i++) {
             int defaultCarSize = 1;
@@ -46,7 +47,7 @@ public class Parking {
      */
     public int returnSizeParking() {
         int size = 0;
-        for (Place p : placeList
+        for (Unit p : placeList
         ) {
             size += p.size();
         }
@@ -57,26 +58,30 @@ public class Parking {
      * очищаем всю парковку
      */
     public void free() {
-        for (Place p : placeList
+        for (Unit p : placeList
         ) {
             p.freePace();
         }
     }
 
-    public List<Place> getPlaceList() {
+    public List<Unit> getPlaceList() {
         return placeList;
     }
 
     /**
      * когда авто покидает стоянку надо место освободить
+     *
      * @param ticket тикет с местом которое освободить
      */
     public void clearPlace(Ticket ticket) {
-        for (Place place : placeList
-             ) {
-            if (place.getNumberPlace() == ticket.getParkingPlace()) {
-                place.freePace();
-                break;
+        for (Unit place : placeList
+        ) {
+            for (Integer numberPlace : ticket.getParkingPlace()
+            ) {
+                if (place.getNumberPlace() == numberPlace) {
+                    place.freePace();
+                    break;
+                }
             }
         }
     }

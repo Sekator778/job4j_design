@@ -29,10 +29,21 @@ public class Service {
     public Ticket parkingAuto(Auto auto) {
         Ticket ticket = null;
         if (finder.checkFreePlace()) {
-            Place place = finder.findPlaceForAuto(auto);
-            place.takenPlace();
-            ticket = new Ticket(auto.getId(), place.getNumberPlace());
-            carParking.put(ticket, auto);
+            Unit[] places = finder.findPlaceForAuto(auto);
+            int sizePlaces = places.length;
+            if (sizePlaces == auto.size()) {
+                int[] numberPlaces = new int[places.length];
+                int i = 0;
+                for (Unit place : places
+                ) {
+                    if (place != null) {
+                        place.takenPlace();
+                        numberPlaces[i++] = place.getNumberPlace();
+                    }
+                }
+                ticket = new Ticket(auto.getId(), numberPlaces);
+                carParking.put(ticket, auto);
+            }
         }
         return ticket;
     }

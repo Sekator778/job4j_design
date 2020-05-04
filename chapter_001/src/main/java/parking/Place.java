@@ -4,7 +4,7 @@ package parking;
  * единица парковки 1но место
  *
  */
-public class Place {
+public class Place implements Unit {
     private static final int DEFAULT_CAR_SIZE = 1;
     private final int size;
     private boolean placeTaken;
@@ -28,6 +28,7 @@ public class Place {
      *
      * @return размер парковки
      */
+    @Override
     public int size() {
         return size;
     }
@@ -35,6 +36,8 @@ public class Place {
     /**
      * @return занято ли место
      */
+    @Override
+
     public boolean isPlaceTaken() {
         return placeTaken;
     }
@@ -42,6 +45,8 @@ public class Place {
     /**
      * занимаем место
      */
+    @Override
+
     public void takenPlace() {
         this.placeTaken = true;
     }
@@ -49,6 +54,7 @@ public class Place {
     /**
      * освобождаем место
      */
+    @Override
     public void freePace() {
         this.placeTaken = false;
         grow = 0;
