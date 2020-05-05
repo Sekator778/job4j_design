@@ -1,6 +1,7 @@
 package test.example;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import test.User;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-
+@Ignore
 public class Post2Test {
     private final List<User> userList = new ArrayList<>();
 
