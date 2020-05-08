@@ -25,10 +25,17 @@ public class MemoryUsage {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        Runtime runtime = Runtime.getRuntime();
         System.out.println("Start main");
         info();
-        for (int i = 0; i < 3; i++) {
-            User user = new User("First");
+        int count = 0;
+        long memory = 0;
+        for (int i = 0; i < 7; i++) {
+            memory =  (runtime.freeMemory() / 1024);
+//            System.out.println(String.format("object before %s",  memory));
+            User user = new User("Bob");
+            memory =  (runtime.freeMemory() / 1024);
+//            System.out.println(String.format("object count %s, memory free %s", ++count,  memory));
             user = null;
 
         }
