@@ -37,20 +37,19 @@ public class ControllQuality {
 
     /**
      * извлекать все продукты и перераспределять их заново
-     * 1. все сториджи скидывают все свои продукты в один общий лист redistributedFood
+     * 1. все сториджи скидывают все свои продукты в один общий лист redistribution
      * 2. всем продуктам дисконт в 0.0
-     * 3. все продукты добавить в хранилища
+     * 3. все продукты добавить обратно в хранилища
      */
     public void resort() {
-        List<Food> redistributedFood = new ArrayList<>();
+        List<Food> redistribution = new ArrayList<>();
         for (Storage store : storages) {
-            redistributedFood.addAll(store.takeAll());
+            redistribution.addAll(store.takeAll());
         }
-        redistributedFood.forEach(food -> food.setDiscount(0.0));
-
-        for (Food food : redistributedFood
+        redistribution.forEach(food -> food.setDiscount(0.0));
+        for (Food food : redistribution
         ) {
-            this.addToStorage(food);
+            addToStorage(food);
         }
     }
 }
