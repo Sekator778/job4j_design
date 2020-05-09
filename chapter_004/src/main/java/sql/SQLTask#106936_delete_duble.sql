@@ -26,6 +26,8 @@ truncate table cities restart identity;
 
 
 
+
+
 --найти дубликаты и их количество
 SELECT name, COUNT(name)
 FROM cities GROUP BY name

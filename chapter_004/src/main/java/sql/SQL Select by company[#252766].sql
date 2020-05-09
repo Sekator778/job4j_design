@@ -39,6 +39,12 @@ select * from person;
 truncate table person restart identity ;
 
 
+
+
+
+
+
+
 select distinct person.name, c.name from person left join company c on person.company_id = c.id
 where c.id <> 5
 order by person.name;
@@ -51,8 +57,7 @@ select person.name from person where company_id <> 5;
 
 
 
-
-select c.name, count(p.company_id) from company c left join person p on c.id = p.company_id
+select c.name, count(p.company_id) from company c left outer join  person p on c.id = p.company_id
 group by c.name
 order by count(p.company_id) desc
 limit 1;

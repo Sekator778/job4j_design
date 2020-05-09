@@ -30,11 +30,37 @@ truncate table  girl  restart identity;
 drop table   toy cascade;
 select * from girl, toy;
 -- 1. Написать sql инструкцию. Инструкция должна добавить колонку toy_id в таблицу girl.
+--go
+
+
+
+
+
+
+
+
+
+
 alter table girl add column toy_id int;
 alter table girl add foreign key (toy_id) references toy;
 -- 2. Написать sql запрос на получение имени девочки и ее игрушки.
+--go
+
+
+
+
+
+
+
 select girl.name, t.name from girl left join toy t on girl.toy_id = t.id
 order by girl.name;
 -- 3. Написать sql запрос на получение игрушек не привязанных к девочкам.
+--go
+
+
+
+
+
+
 select toy.name from toy
 where toy.id not in (select toy_id from girl);

@@ -40,25 +40,71 @@ from type;
 drop table product;
 -- Задание.
 --
--- 1. Написать запрос получение всех продуктов с типом "СЫР"
+-- 1. Написать запрос получение всех продуктов с типом "сыр"
+
+
+
+
+
+
+
+
+
+
 select * from product
 where product.type_id in (select id from type where name = 'сыр');
 -- 2. Написать запрос получения всех продуктов, у кого в имени есть слово "мороженное"
 --
+
+
+
+
+
+
+
+
+
 select *
 from product
 where name like '%мороженное%';
 -- 3. Написать запрос, который выводит все продукты, срок годности которых заканчивается в следующем месяце.
 --
-select * from product
+
+
+
+
+
+
+
+
+select *
+from product
 where date_part('month', expired_date) = date_part('month', current_date) + 1;
 -- 4. Написать запрос, который выводит самый дорогой продукт.
 --
+
+
+
+
+
+
+
+
+
 select *
 from product
 where price = (select max(price) from product);
 -- 5. Написать запрос, который выводит количество всех продуктов определенного типа.
 --
+
+
+
+
+
+
+
+
+
 select product.name, count(id)
 from product where product.type_id = (select id from type where type.name = 'алкоголь')
 group by product.name;
