@@ -1,5 +1,7 @@
 package parking;
 
+import parking.auto.Auto;
+
 import java.util.HashMap;
 import java.util.Map;
 

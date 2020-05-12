@@ -1,4 +1,4 @@
-package parking;
+package parking.auto;
 
 public interface Auto {
     /**

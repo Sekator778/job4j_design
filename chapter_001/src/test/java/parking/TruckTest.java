@@ -2,6 +2,8 @@ package parking;
 
 import org.junit.Before;
 import org.junit.Test;
+import parking.auto.Auto;
+import parking.auto.Truck;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;

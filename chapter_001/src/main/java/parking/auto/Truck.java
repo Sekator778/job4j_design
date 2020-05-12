@@ -1,10 +1,10 @@
-package parking;
+package parking.auto;
 
-public class Car implements Auto {
+public class Truck implements Auto {
     private final int id;
-    private static final int SIZE = 1;
+    private static final int SIZE = 4;
 
-    public Car(int id) {
+    public Truck(int id) {
         this.id = id;
     }
 
@@ -17,7 +17,6 @@ public class Car implements Auto {
     public int size() {
         return SIZE;
     }
-
     @Override
     public String toString() {
         return "Car{" + "id = " + id + ", have a size = " + SIZE + '}';

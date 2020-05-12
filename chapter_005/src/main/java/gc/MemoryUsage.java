@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Демонстрация работы GC
- * ни в какую не мог инициализировать GC
- * пока не усыпил
  */
 
 public class MemoryUsage {
@@ -24,52 +22,30 @@ public class MemoryUsage {
 
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Runtime runtime = Runtime.getRuntime();
         System.out.println("Start main");
         info();
         int count = 0;
         long memory = 0;
-        for (int i = 0; i < 7; i++) {
-            memory =  (runtime.freeMemory() / 1024);
+        for (int k = 0; k < 500000; k++) {
+
+            for (int i = 0; i < 17; i++) {
+                memory = (runtime.freeMemory() / 1024);
 //            System.out.println(String.format("object before %s",  memory));
-            User user = new User("Bob");
-            memory =  (runtime.freeMemory() / 1024);
+                User user = new User("Bob");
+                memory = (runtime.freeMemory() / 1024);
 //            System.out.println(String.format("object count %s, memory free %s", ++count,  memory));
-            user = null;
+                user = null;
 
+            }
+            System.gc();
+//            Thread.sleep(100);
+            System.out.println("finish main");
+            info();
+//            Thread.sleep(200);
         }
-        System.gc();
-        Thread.sleep(100);
-        System.out.println("finish main");
-        info();
 
     }
 
-    public static class User {
-        public String name;
-
-        public User(String name) {
-            this.name = name;
-//            a();
-        }
-
-        /**
-         * StackOverflow
-         */
-        private void a() {
-            a();
-        }
-
-        @Override
-        public String toString() {
-            return "User{" + "name='" + name + '\'' + '}';
-        }
-
-        @Override
-        protected void finalize() throws Throwable {
-            super.finalize();
-            System.out.println(String.format("destroy object %s", this));
-        }
-    }
 }
