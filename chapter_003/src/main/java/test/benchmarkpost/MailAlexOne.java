@@ -1,4 +1,4 @@
-package test;
+package test.benchmarkpost;
 
 import java.util.*;
 
@@ -6,40 +6,8 @@ import java.util.*;
  *
  */
 public class MailAlexOne {
-    public static void main(String[] args) {
-        Set<String> user1Set = new LinkedHashSet<>();
-        user1Set.add("xxx@ya.ru");
-        user1Set.add("foo@gmail.com");
-        user1Set.add("lol@mail.ru");
+//    public static void main(String[] args) {
 
-        Set<String> user2Set = new LinkedHashSet<>();
-        user2Set.add("foo@gmail.com");
-        user2Set.add("ups@pisem.net");
-
-        Set<String> user3Set = new LinkedHashSet<>();
-        user3Set.add("xyz@pisem.net");
-        user3Set.add("vasya@pupkin.com");
-
-        Set<String> user4Set = new LinkedHashSet<>();
-        user4Set.add("ups@pisem.net");
-        user4Set.add("aaa@bbb.ru");
-
-        Set<String> user5Set = new LinkedHashSet<>();
-        user5Set.add("xyz@pisem.net");
-
-        User user1 = new User("user1", user1Set);
-        User user2 = new User("user2", user2Set);
-        User user3 = new User("user3", user3Set);
-        User user4 = new User("user4", user4Set);
-        User user5 = new User("user5", user5Set);
-
-        List<User> userList = new ArrayList<>(List.of(
-                user1,
-                user2,
-                user3,
-                user4,
-                user5
-        ));
 //        Map<String, User> output = convert(userList);
 //        output.forEach((k, v) -> System.out.println("-> " + k + " : " + v.getName()));
 //        System.out.println("user1 mails " + user1.getMails());
@@ -47,8 +15,8 @@ public class MailAlexOne {
 //
 //        Map<User, Set<String>> output = convert(userList);
 //        output.forEach((k, v) -> System.out.println("-> " + k.getName() + " : " + v.toString()));
-        somePublicMethod(userList);
-    }
+//        somePublicMethod();
+//    }
 
     public static Map<User, Set<String>> convert(List<User> input) {
         // первая тут будут уники мейлы и пользователь который последний добавил его
@@ -83,41 +51,40 @@ public class MailAlexOne {
         }
         return two;
     }
+    public  static void somePublicMethod() {
+        Set<String> user1Set = new LinkedHashSet<>();
+        user1Set.add("xxx@ya.ru");
+        user1Set.add("foo@gmail.com");
+        user1Set.add("lol@mail.ru");
 
-    private static class User {
-        String name;
-        Set<String> mails;
-        boolean isProcessed = false;
+        Set<String> user2Set = new LinkedHashSet<>();
+        user2Set.add("foo@gmail.com");
+        user2Set.add("ups@pisem.net");
 
-        public User(String name, Set<String> mails) {
-            this.name = name;
-            this.mails = mails;
-        }
+        Set<String> user3Set = new LinkedHashSet<>();
+        user3Set.add("xyz@pisem.net");
+        user3Set.add("vasya@pupkin.com");
 
-        public String getName() {
-            return name;
-        }
+        Set<String> user4Set = new LinkedHashSet<>();
+        user4Set.add("ups@pisem.net");
+        user4Set.add("aaa@bbb.ru");
 
-        public Set<String> getMails() {
-            return mails;
-        }
+        Set<String> user5Set = new LinkedHashSet<>();
+        user5Set.add("xyz@pisem.net");
 
-        @Override
-        public String toString() {
-            return "name='" + name + '\'' + ", mails=" + mails;
-        }
-    }
+        User user1 = new User("user1", user1Set);
+        User user2 = new User("user2", user2Set);
+        User user3 = new User("user3", user3Set);
+        User user4 = new User("user4", user4Set);
+        User user5 = new User("user5", user5Set);
 
-    public  static void somePublicMethod(List<User> userList) {
-        long startTime = 0;
-        long endTime = 0;
-        startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < 100_000; i++) {
+        List<User> userList = new ArrayList<>(List.of(
+                user1,
+                user2,
+                user3,
+                user4,
+                user5
+        ));
             convert(userList);
-        }
-        endTime = System.currentTimeMillis();
-
-        System.out.println("Total execution time: " + (endTime - startTime) + "ms");
     }
 }
