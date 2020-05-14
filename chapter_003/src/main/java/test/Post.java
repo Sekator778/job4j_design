@@ -2,6 +2,9 @@ package test;
 
 import java.util.*;
 
+/**
+ * моя первая вариация тут не линейно но прикольно с булен чекером
+ */
 public class Post {
 
     public static void main(String[] args) {
@@ -124,7 +127,6 @@ public class Post {
             convert(userList);
         }
         endTime = System.currentTimeMillis();
-
         System.out.println("Total execution time: " + (endTime - startTime) + "ms");
     }
 }

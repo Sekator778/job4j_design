@@ -5,7 +5,7 @@ import java.util.*;
 /**
  *
  */
-public class Mails {
+public class MailAlexOne {
     public static void main(String[] args) {
         Set<String> user1Set = new LinkedHashSet<>();
         user1Set.add("xxx@ya.ru");
@@ -40,29 +40,46 @@ public class Mails {
                 user4,
                 user5
         ));
-
-        // тест моей с аддОлл по ключу
-
-    somePublicMethod(userList);
+//        Map<String, User> output = convert(userList);
+//        output.forEach((k, v) -> System.out.println("-> " + k + " : " + v.getName()));
+//        System.out.println("user1 mails " + user1.getMails());
+//        System.out.println("user3 mails " + user3.getMails());
+//
 //        Map<User, Set<String>> output = convert(userList);
 //        output.forEach((k, v) -> System.out.println("-> " + k.getName() + " : " + v.toString()));
+        somePublicMethod(userList);
     }
 
     public static Map<User, Set<String>> convert(List<User> input) {
+        // первая тут будут уники мейлы и пользователь который последний добавил его
         Map<String, User> one = new HashMap<>();
         Map<User, Set<String>> two = new HashMap<>();
+
+        // тут будут уники юзеры и мейлы из первой карты где он засветился с таким мейлом
+        // выгружаем всех юзеров попорядку
         for (User user : input
         ) {
             User temp = user;
+            // выгружаем каждого юзера почту по одной
             for (String email : user.getMails()
             ) {
-                one.putIfAbsent(email, temp);
-                if (!one.containsValue(temp)) {
+                // если почты нет еще в
+                if (!one.containsKey(email)) {
+                    // то добавляем почту и юзера
+                    one.put(email, temp);
+                } else {
+                    // но если есть то всю почту этого юзера кидаем тому кто ее уже принеc
                     one.get(email).getMails().addAll(temp.getMails());
-                    two.put(one.get(email), one.get(email).getMails());
-                    temp = one.get(email);
+                    for (String mail2 : one.get(email).getMails()) {
+                        one.putIfAbsent(mail2, one.get(email));
+                    }
+                    break;
                 }
+                    two.put(one.get(email), one.get(email).getMails());
+//                    temp = one.get(email);
             }
+//            two.put(temp, temp.getMails());
+
         }
         return two;
     }
@@ -70,6 +87,7 @@ public class Mails {
     private static class User {
         String name;
         Set<String> mails;
+        boolean isProcessed = false;
 
         public User(String name, Set<String> mails) {
             this.name = name;
@@ -95,7 +113,7 @@ public class Mails {
         long endTime = 0;
         startTime = System.currentTimeMillis();
 
-        for (int i = 0; i < 100_000_000; i++) {
+        for (int i = 0; i < 100_000; i++) {
             convert(userList);
         }
         endTime = System.currentTimeMillis();

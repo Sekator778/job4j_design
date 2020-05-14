@@ -3,7 +3,7 @@ package test;
 import java.util.List;
 
 /**
- *
+ * класс юзер для почты
  */
 
 public class User {

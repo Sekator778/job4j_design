@@ -3,9 +3,9 @@ package test;
 import java.util.*;
 
 /**
- *
+ * Вариант Петра
  */
-public class Mail {
+public class MailsPetr {
     public static void main(String[] args) {
         Set<String> user1Set = new LinkedHashSet<>();
         user1Set.add("xxx@ya.ru");
@@ -40,46 +40,32 @@ public class Mail {
                 user4,
                 user5
         ));
-//        Map<String, User> output = convert(userList);
-//        output.forEach((k, v) -> System.out.println("-> " + k + " : " + v.getName()));
-//        System.out.println("user1 mails " + user1.getMails());
-//        System.out.println("user3 mails " + user3.getMails());
-//
-//        Map<User, Set<String>> output = convert(userList);
-//        output.forEach((k, v) -> System.out.println("-> " + k.getName() + " : " + v.toString()));
         somePublicMethod(userList);
+
+//        Map<User, Set<String>> output = convert2(userList);
+//        output.forEach((k, v) -> System.out.println("-> " + k.getName() + " : " + v.toString()));
     }
 
-    public static Map<User, Set<String>> convert(List<User> input) {
-        // первая тут будут уники мейлы и пользователь который последний добавил его
+    public static Map<User, Set<String>> convert2(List<User> input) {
         Map<String, User> one = new HashMap<>();
         Map<User, Set<String>> two = new HashMap<>();
-
-        // тут будут уники юзеры и мейлы из первой карты где он засветился с таким мейлом
-        // выгружаем всех юзеров попорядку
-        for (User user : input
-        ) {
-            User temp = user;
-            // выгружаем каждого юзера почту по одной
-            for (String email : user.getMails()
-            ) {
-                // если почты нет еще в
-                if (!one.containsKey(email)) {
-                    // то добавляем почту и юзера
-                    one.put(email, temp);
-                } else {
-                    // но если есть то всю почту этого юзера кидаем тому кто ее уже принеc
-                    one.get(email).getMails().addAll(temp.getMails());
-                    for (String mail2 : one.get(email).getMails()) {
-                        one.putIfAbsent(mail2, one.get(email));
-                    }
+        User names = null;
+        for (User user : input) {
+            User name = user;
+            for (String mail : user.getMails()) {
+                if (one.containsKey(mail)) {
+                    name = one.get(mail);
                     break;
                 }
-                    two.put(one.get(email), one.get(email).getMails());
-//                    temp = one.get(email);
             }
-//            two.put(temp, temp.getMails());
-
+            two.putIfAbsent(name, new HashSet<>());
+            Set<String> el = two.get(name);
+            for (String gr : user.getMails()) {
+                el.add(gr);
+            }
+            for (String gr : user.getMails()) {
+                one.put(gr, name);
+            }
         }
         return two;
     }
@@ -107,17 +93,14 @@ public class Mail {
             return "name='" + name + '\'' + ", mails=" + mails;
         }
     }
-
     public  static void somePublicMethod(List<User> userList) {
         long startTime = 0;
         long endTime = 0;
         startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < 100_000_000; i++) {
-            convert(userList);
+        for (int i = 0; i < 100_000; i++) {
+            convert2(userList);
         }
         endTime = System.currentTimeMillis();
-
         System.out.println("Total execution time: " + (endTime - startTime) + "ms");
     }
 }

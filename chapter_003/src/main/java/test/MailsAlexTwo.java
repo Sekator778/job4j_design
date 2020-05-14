@@ -5,7 +5,7 @@ import java.util.*;
 /**
  *
  */
-public class Mails3 {
+public class MailsAlexTwo {
     public static void main(String[] args) {
         Set<String> user1Set = new LinkedHashSet<>();
         user1Set.add("xxx@ya.ru");
@@ -40,31 +40,28 @@ public class Mails3 {
                 user4,
                 user5
         ));
-        somePublicMethod(userList);
 
-//        Map<User, Set<String>> output = convert2(userList);
+        // тест моей с аддОлл по ключу
+
+    somePublicMethod(userList);
+//        Map<User, Set<String>> output = convert(userList);
 //        output.forEach((k, v) -> System.out.println("-> " + k.getName() + " : " + v.toString()));
     }
 
-    public static Map<User, Set<String>> convert2(List<User> input) {
+    public static Map<User, Set<String>> convert(List<User> input) {
         Map<String, User> one = new HashMap<>();
         Map<User, Set<String>> two = new HashMap<>();
-        User names = null;
-        for (User user : input) {
-            User name = user;
-            for (String mail : user.getMails()) {
-                if (one.containsKey(mail)) {
-                    name = one.get(mail);
-                    break;
+        for (User user : input
+        ) {
+            User temp = user;
+            for (String email : user.getMails()
+            ) {
+                one.putIfAbsent(email, temp);
+                if (!one.containsValue(temp)) {
+                    one.get(email).getMails().addAll(temp.getMails());
+                    two.put(one.get(email), one.get(email).getMails());
+                    temp = one.get(email);
                 }
-            }
-            two.putIfAbsent(name, new HashSet<>());
-            Set<String> el = two.get(name);
-            for (String gr : user.getMails()) {
-                el.add(gr);
-            }
-            for (String gr : user.getMails()) {
-                one.put(gr, name);
             }
         }
         return two;
@@ -73,7 +70,6 @@ public class Mails3 {
     private static class User {
         String name;
         Set<String> mails;
-        boolean isProcessed = false;
 
         public User(String name, Set<String> mails) {
             this.name = name;
@@ -93,13 +89,14 @@ public class Mails3 {
             return "name='" + name + '\'' + ", mails=" + mails;
         }
     }
+
     public  static void somePublicMethod(List<User> userList) {
         long startTime = 0;
         long endTime = 0;
         startTime = System.currentTimeMillis();
 
-        for (int i = 0; i < 100_000_000; i++) {
-            convert2(userList);
+        for (int i = 0; i < 100_000; i++) {
+            convert(userList);
         }
         endTime = System.currentTimeMillis();
 
