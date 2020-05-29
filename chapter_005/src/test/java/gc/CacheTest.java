@@ -1,6 +1,5 @@
 package gc;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
@@ -13,22 +12,22 @@ import static org.junit.Assert.assertThat;
 
 public class CacheTest {
 
-    @Ignore
+    @Test
     public void whenReadSimpleNameTXT() {
         String expected = "Nick" + System.lineSeparator() + "Masha" + System.lineSeparator() + "Victor";
         String name = "name.txt";
-        File file = new File("/home/sekator/projects/job4j_design/chapter_005/src/main/resources/name.txt");
+        File file = new File("src/main/resources/name.txt");
         String absolutePath = file.getAbsolutePath();
         String tempFilePath = absolutePath.substring(0, absolutePath.lastIndexOf(File.separator));
         Cache cacheFileData = new Cache(tempFilePath);
         assertThat(cacheFileData.getValue(name), is(expected));
     }
 
-    @Ignore
+    @Test
     public void whenReadSimpleAddressTXT() {
         String expected = "Dom" + System.lineSeparator() + "Pyshkina" + System.lineSeparator() + "Ylitsa";
         String name = "address.txt";
-        File file = new File("/home/sekator/projects/job4j_design/chapter_005/src/main/resources/address.txt");
+        File file = new File("src/main/resources/address.txt");
         String absolutePath = file.getAbsolutePath();
         String tempFilePath = absolutePath.substring(0, absolutePath.lastIndexOf(File.separator));
         Cache cacheFileData = new Cache(tempFilePath);

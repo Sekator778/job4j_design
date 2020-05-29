@@ -45,7 +45,5 @@ public class MemoryUsage {
             info();
 //            Thread.sleep(200);
         }
-
     }
-
 }
