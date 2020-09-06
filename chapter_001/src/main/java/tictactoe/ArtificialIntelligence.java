@@ -30,7 +30,7 @@ public class ArtificialIntelligence {
     private boolean unique(Set<Point> field, Point point) {
         boolean rsl = false;
         for (Point p : field
-             ) {
+        ) {
             if (p.getX() == point.getX() && p.getY() == point.getY()) {
                 rsl = true;
                 break;

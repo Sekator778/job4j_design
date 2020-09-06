@@ -4,11 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * логика крестики нолики выиграш ничья или точка на поле
+ * логика крестики нолики выигрыш ничья или точка на поле
  */
 
 public class Logic {
-    private int size;
+    private final int size;
     private final Set<Point> field;
 
     public Logic(int size) {
