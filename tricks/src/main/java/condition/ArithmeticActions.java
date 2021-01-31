@@ -23,6 +23,8 @@ public class ArithmeticActions {
             return "multiplied";
         } else if (((left / right) == rsl)) {
             return "divided";
-        } else return "none";
+        } else {
+            return "none";
+        }
     }
 }

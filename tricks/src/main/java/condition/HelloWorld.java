@@ -23,6 +23,8 @@ public class HelloWorld {
             return "World";
         } else if (three) {
             return "Hello, World!!!";
-        } else return "Operation not support";
+        } else {
+            return "Operation not support";
+        }
     }
 }

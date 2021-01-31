@@ -18,7 +18,9 @@ public class LeapYear {
     public static boolean checkYear(int year) {
         List<Integer> noLeapYear = List.of(1700, 1800, 1900, 2100);
         boolean leap = year % 400 == 0 || year % 100 == 0 || year % 4 == 0;
-        if (noLeapYear.contains(year)) return false;
+        if (noLeapYear.contains(year)) {
+            return false;
+        }
         return leap;
     }
 }

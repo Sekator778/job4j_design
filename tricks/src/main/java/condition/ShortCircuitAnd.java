@@ -14,7 +14,7 @@ public class ShortCircuitAnd {
 
     public static void main(String[] args) {
         if (showB() && showA()) {
-
+            System.out.println("ignor me");
         }
     }
 
