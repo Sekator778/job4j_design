@@ -10,7 +10,7 @@ package array;
 public class SumOfDifferences {
     public static int sum(int[] nums) {
         int sum = 0, left, right;
-        for (int i = 0; i < nums.length - 2; ) {
+        for (int i = 0; i < nums.length - 2;) {
             left = nums[i] - nums[++i];
             right = nums[i] - nums[++i];
             sum += (left + right);

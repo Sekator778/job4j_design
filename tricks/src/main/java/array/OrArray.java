@@ -1,6 +1,7 @@
 package array;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Объединение множеств это такая операция при которой в результирующее

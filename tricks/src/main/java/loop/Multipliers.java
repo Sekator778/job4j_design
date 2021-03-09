@@ -7,13 +7,12 @@ public class Multipliers {
 
     public static String metod(int n) {
         String res = "";
-        String ln = System.lineSeparator();
         for (int i = 1; i <= n; i++) {
             if (0 == (n % i)) {
-                res += i + ln;
+                res += i + "\n";
             }
         }
-        res = res.substring(0, res.length() - 2);
+        res = res.substring(0, res.length() - 1);
         return res;
     }
 }

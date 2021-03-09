@@ -20,7 +20,7 @@ public class CheckSumIndexes {
         int[][] data = {
                 {1, 2, 3, 4},
                 {5, 6, 7, 8},
-                {9, 10, 11, 12} ,
+                {9, 10, 11, 12},
                 {13, 14, 15, 16}
         };
         int[] result = new int[10];
@@ -43,12 +43,13 @@ public class CheckSumIndexes {
         return target;
     }
     public static int[] collectNewArray(int[][] data, int sum) {
-        int [] result = new int[67];
-        int [] res = new int[100];
+        var result = new int[67];
+        var res = new int[100];
         int k = 0;
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[i].length; j++) {
                 if ((i + j) == sum) {
+                    System.out.println();
                 } else {
                     res = Arrays.copyOf(data[i], j);
                     result[k++] = data[i][j];

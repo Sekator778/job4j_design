@@ -15,13 +15,12 @@ public class SumWithStopEl {
             if (i == el) {
                 if ((sum % 2) == 0) {
                     return sum;
-                }
-                else {
+                } else {
                     return 0;
                 }
             }
             sum += i;
         }
-       return -1;
+        return -1;
     }
 }
