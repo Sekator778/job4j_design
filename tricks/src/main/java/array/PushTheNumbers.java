@@ -8,38 +8,48 @@ package array;
  * и два индекса
  * индекс строки и индекс колонки.
  * В данную ячейку записывается 0 а все цифры левее, правее, выше и ниже сдвигаются на 1 ячейку
- *
+ * <p>
  * Например было
  * {1, 2, 3},
  * {4, 5, 6},
  * {7, 8, 9}
  * и если индексы это 1 и 1 то массив должен иметь вид
- *
+ * <p>
  * {1, 5, 3},
  * {5, 0, 5},
  * {7, 5, 9}
  */
 public class PushTheNumbers {
-    public static void main(String[] args) {
-        int[][] array = {
-                {62, 12, 86, 96, 2},
-                {78, 98, 10, 45, 86},
-                {82, 59, 47, 88, 79},
-                {99, 10, 91, 73, 88},
-                {32, 48, 8, 87, 55}
-        };
-        PushTheNumbers.push(array, 2, 2);
-    }
+
     public static void push(int[][] array, int row, int column) {
-        int tmp = array[row][column];
+        pushHorizontal(array, row, column);
+        pushVertical(array, row, column);
         array[row][column] = 0;
+    }
 
-        for (int[] ints : array) {
-            for (int anInt : ints) {
-                System.out.print(anInt + " ");
+    private static void pushHorizontal(int[][] array, int row, int column) {
+        for (int i = 0; i < array[row].length; i++) {
+            if (i < column) {
+                array[row][i] = array[row][i + 1];
             }
-            System.out.println();
         }
+        for (int i = array[row].length - 1; i >= 0; i--) {
+            if (i > column) {
+                array[row][i] = array[row][i - 1];
+            }
+        }
+    }
 
+    private static void pushVertical(int[][] array, int row, int column) {
+        for (int i = 0; i < array.length; i++) {
+            if (i < row) {
+                array[i][column] = array[i + 1][column];
+            }
+        }
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (i > row) {
+                array[i][column] = array[i - 1][column];
+            }
+        }
     }
 }
