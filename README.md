@@ -20,4 +20,4 @@ I love JAVA
 
 [Добавить зависимость](course_materials/how.md#OM)
 
-![джавик](https://github.com/Sekator778/job4j_design/blob/master/course_materials/java_pic.jpg)
+#![джавик](https://github.com/Sekator778/job4j_design/blob/master/course_materials/java_pic.jpg)
