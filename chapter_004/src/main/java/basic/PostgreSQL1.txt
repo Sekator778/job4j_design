@@ -1,3 +1,7 @@
+Чтобы подключиться к БД надо ввести команду
+
+psql --username=postgre
+
 -- Подключитесь от имени пользователя postgres:
 su - postgres
 --Добавление нового пользователя main and set password 
