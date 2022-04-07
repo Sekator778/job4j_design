@@ -34,7 +34,7 @@ public class MaxMin {
      * @param value - лист с данными
      * @param comparator - просто компаратор
      * @param predicate - условие для теста
-     * @param <T> - это вроде дженерик короче обобщенный тип
+     * @param <T> - обобщенный тип
      * @return - искомое
      */
     private <T> T findMinMax(List<T> value, Comparator<T> comparator, IntPredicate predicate) {
